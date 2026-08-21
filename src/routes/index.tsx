@@ -33,7 +33,7 @@ function Home() {
           '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            Search every .tsx, .jsx, .ts, and .css file in this project for any element with a "hidden" class, display:none, or visibility:hidden that contains large blocks of prose text rather than real UI content or legitimate code comments. This is dead, non-functional content that should never have been added — delete every instance found, in every file, not just index.tsx. List each file and line range you removed. Then confirm the project still builds with zero TypeScript errors
+                                            Load the security issues from the scan results and fix the selected issues.
         </div>
         <Breadcrumb />
         <AnimatePresence mode="wait">
