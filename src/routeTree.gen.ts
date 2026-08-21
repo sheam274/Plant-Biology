@@ -19,7 +19,6 @@ import { Route as OutreachRouteImport } from './routes/outreach'
 import { Route as PeopleRouteImport } from './routes/people'
 import { Route as PublicationsRouteImport } from './routes/publications'
 import { Route as ResearchRouteImport } from './routes/research'
-import { Route as AuthenticatedAdminRouteRouteImport } from './routes/_authenticated/admin/route'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
 
 const IndexRoute = IndexRouteImport.update({
@@ -71,15 +70,10 @@ const ResearchRoute = ResearchRouteImport.update({
   path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedAdminRouteRoute = AuthenticatedAdminRouteRouteImport.update({
-  id: '/admin',
-  path: '/admin',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
 const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AuthenticatedAdminRouteRoute,
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -92,7 +86,6 @@ export interface FileRoutesByFullPath {
   '/people': typeof PeopleRoute
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
-  '/admin': typeof AuthenticatedAdminRouteRouteWithChildren
   '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -119,7 +112,6 @@ export interface FileRoutesById {
   '/people': typeof PeopleRoute
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
-  '/_authenticated/admin': typeof AuthenticatedAdminRouteRouteWithChildren
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -134,7 +126,6 @@ export interface FileRouteTypes {
     | '/people'
     | '/publications'
     | '/research'
-    | '/admin'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -160,7 +151,6 @@ export interface FileRouteTypes {
     | '/people'
     | '/publications'
     | '/research'
-    | '/_authenticated/admin'
     | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -249,43 +239,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/admin': {
-      id: '/_authenticated/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AuthenticatedAdminRouteRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
     '/_authenticated/admin/': {
       id: '/_authenticated/admin/'
-      path: '/'
+      path: '/admin'
       fullPath: '/admin/'
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
-      parentRoute: typeof AuthenticatedAdminRouteRoute
+      parentRoute: typeof AuthenticatedRouteRoute
     }
   }
 }
 
-interface AuthenticatedAdminRouteRouteChildren {
+interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
-const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren =
-  {
-    AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
-  }
-
-const AuthenticatedAdminRouteRouteWithChildren =
-  AuthenticatedAdminRouteRoute._addFileChildren(
-    AuthenticatedAdminRouteRouteChildren,
-  )
-
-interface AuthenticatedRouteRouteChildren {
-  AuthenticatedAdminRouteRoute: typeof AuthenticatedAdminRouteRouteWithChildren
-}
-
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedAdminRouteRoute: AuthenticatedAdminRouteRouteWithChildren,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
