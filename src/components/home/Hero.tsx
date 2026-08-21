@@ -23,7 +23,7 @@ export const Hero: React.FC = () => {
               {`'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            Wire the Home page components to fetch their content from Supabase (with safe fallbacks) instead of using hardcoded labels.`}
+                                            I have approved the plan`}
             </p>
             <div className="flex flex-wrap gap-4">
               <button className="px-8 py-4 bg-primary text-bg font-medium hover:bg-primary-soft transition-colors flex items-center gap-2 group">
