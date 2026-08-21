@@ -14,7 +14,198 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blog_posts: {
+        Row: {
+          catalog_id: string
+          content: string
+          created_at: string
+          date: string
+          excerpt: string | null
+          id: string
+          image_url: string | null
+          published: boolean
+          title: string
+        }
+        Insert: {
+          catalog_id: string
+          content: string
+          created_at?: string
+          date?: string
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          published?: boolean
+          title: string
+        }
+        Update: {
+          catalog_id?: string
+          content?: string
+          created_at?: string
+          date?: string
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          published?: boolean
+          title?: string
+        }
+        Relationships: []
+      }
+      gallery_items: {
+        Row: {
+          caption: string | null
+          catalog_id: string
+          category: string | null
+          created_at: string
+          id: string
+          image_url: string
+          title: string
+        }
+        Insert: {
+          caption?: string | null
+          catalog_id: string
+          category?: string | null
+          created_at?: string
+          id?: string
+          image_url: string
+          title: string
+        }
+        Update: {
+          caption?: string | null
+          catalog_id?: string
+          category?: string | null
+          created_at?: string
+          id?: string
+          image_url?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      lab_members: {
+        Row: {
+          bio: string | null
+          catalog_id: string
+          created_at: string
+          display_order: number | null
+          id: string
+          image_url: string | null
+          name: string
+          role: string
+          status: Database["public"]["Enums"]["member_status"]
+        }
+        Insert: {
+          bio?: string | null
+          catalog_id: string
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          image_url?: string | null
+          name: string
+          role: string
+          status?: Database["public"]["Enums"]["member_status"]
+        }
+        Update: {
+          bio?: string | null
+          catalog_id?: string
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          role?: string
+          status?: Database["public"]["Enums"]["member_status"]
+        }
+        Relationships: []
+      }
+      outreach_events: {
+        Row: {
+          catalog_id: string
+          created_at: string
+          date: string
+          description: string
+          id: string
+          location: string | null
+          title: string
+        }
+        Insert: {
+          catalog_id: string
+          created_at?: string
+          date: string
+          description: string
+          id?: string
+          location?: string | null
+          title: string
+        }
+        Update: {
+          catalog_id?: string
+          created_at?: string
+          date?: string
+          description?: string
+          id?: string
+          location?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      publications: {
+        Row: {
+          authors: string[]
+          catalog_id: string
+          created_at: string
+          id: string
+          journal: string
+          title: string
+          url: string | null
+          year: number
+        }
+        Insert: {
+          authors: string[]
+          catalog_id: string
+          created_at?: string
+          id?: string
+          journal: string
+          title: string
+          url?: string | null
+          year: number
+        }
+        Update: {
+          authors?: string[]
+          catalog_id?: string
+          created_at?: string
+          id?: string
+          journal?: string
+          title?: string
+          url?: string | null
+          year?: number
+        }
+        Relationships: []
+      }
+      research_programs: {
+        Row: {
+          catalog_id: string
+          category: string
+          created_at: string
+          description: string
+          id: string
+          title: string
+        }
+        Insert: {
+          catalog_id: string
+          category: string
+          created_at?: string
+          description: string
+          id?: string
+          title: string
+        }
+        Update: {
+          catalog_id?: string
+          category?: string
+          created_at?: string
+          description?: string
+          id?: string
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +214,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      member_status: "active" | "alumni" | "staff"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +341,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      member_status: ["active", "alumni", "staff"],
+    },
   },
 } as const
