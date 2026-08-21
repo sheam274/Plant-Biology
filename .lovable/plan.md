@@ -1,5 +1,21 @@
 '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
 
+implement this theme --bg: #10160F
+
+--surface: #171E15
+
+--ink: #EDE9DC
+
+--primary: #7FBF8A       /* chlorophyll lightened for dark-bg contrast */
+
+--accent-amber: #E3A94A  /* warmer/brighter amber, reads like a lamp glow */
+
+--accent-teal: #4E9C8C
+
+--line: #2B3327
+
+--highlight: #A6E05A
+
 Extend the CGPBL site with the following theme and navigation system, building on the design tokens already established.
 
 THEME: "Field Notebook" — implement Day/Night mode as a real theme system (not just inverted colors). Day mode uses the existing cream/green/amber tokens. Night mode uses these additional tokens: --bg: #10160F, --surface: #171E15, --ink: #EDE9DC, --primary: #7FBF8A, --accent-amber: #E3A94A, --accent-teal: #4E9C8C, --line: #2B3327, --highlight: #A6E05A. Implement as CSS variables switched via a `data-theme` attribute on <html>, driven by a ThemeProvider in React context, persisted to localStorage, defaulting to system preference (prefers-color-scheme) on first visit. The toggle is a small sun/leaf-morph icon button in the navbar — animate the icon transition, don't just swap it.
