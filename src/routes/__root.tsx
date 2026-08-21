@@ -77,16 +77,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "CGPBL — Cell Genetics & Plant Biotechnology Laboratory" },
+      { name: "description", content: "Researching the future of plant genetics at Jahangirnagar University, Bangladesh." },
+      { name: "author", content: "CGPBL" },
+      { property: "og:title", content: "CGPBL — Cell Genetics & Plant Biotechnology Laboratory" },
+      { property: "og:description", content: "Researching the future of plant genetics at Jahangirnagar University, Bangladesh." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,soft,wght@9..144,0..100,100..900&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
