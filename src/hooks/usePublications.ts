@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { type ResearchProgram } from "../types";
+import { type Publication } from "../types";
 
-export const useResearchAreas = () => {
+export const usePublications = () => {
   return useQuery({
-    queryKey: ["research_areas"],
+    queryKey: ["publications"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("research_programs")
+        .from("publications")
         .select("*")
-        .order("display_order", { ascending: true });
+        .order("year", { ascending: false });
 
       if (error) throw error;
-      return data as ResearchProgram[];
+      return data as Publication[];
     },
   });
 };
