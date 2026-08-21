@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { SpecimenCard } from "../shared/SpecimenCard";
 
 const STATS = [
   {
@@ -30,31 +31,26 @@ const STATS = [
 
 export const StatStrip: React.FC = () => {
   return (
-    <section className="py-12 bg-bg border-b border-line">
-      <div className="container mx-auto px-4">
+    <section className="py-12 bg-bg border-b border-line relative overflow-hidden">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {STATS.map((stat, i) => (
-            <motion.div 
+            <SpecimenCard
               key={i}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="relative pl-6 border-l border-line"
+              variant="glass"
+              catalogId={stat.catalog}
+              title={stat.value}
+              className="border-none bg-transparent backdrop-blur-none saturate-100 shadow-none p-0 group"
             >
-              <div className="mono-data text-[8px] text-amber absolute top-0 left-0 -translate-x-1/2 bg-bg py-1">
-                {stat.catalog}
+              <div className="relative pl-6 border-l border-line mt-4">
+                <div className="mono-data text-[10px] text-primary-soft uppercase tracking-wider mb-2">
+                  {stat.label}
+                </div>
+                <p className="text-xs text-ink/70 leading-relaxed">
+                  {stat.desc}
+                </p>
               </div>
-              <div className="mono-data text-[10px] text-primary-soft uppercase tracking-wider mb-2">
-                {stat.label}
-              </div>
-              <div className="text-3xl font-display text-primary mb-2">
-                {stat.value}
-              </div>
-              <p className="text-xs text-ink/70 leading-relaxed">
-                {stat.desc}
-              </p>
-            </motion.div>
+            </SpecimenCard>
           ))}
         </div>
       </div>

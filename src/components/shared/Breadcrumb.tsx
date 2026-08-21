@@ -36,7 +36,7 @@ export const Breadcrumb: React.FC = () => {
       <nav className="container mx-auto px-4 py-4" aria-label="Breadcrumb">
         <ol className="flex items-center gap-2 mono-data text-[10px] text-primary-soft uppercase tracking-wider">
           <li>
-            <Link to="/" className="hover:text-amber transition-colors">
+            <Link to="/" className="hover-underline">
               Home
             </Link>
           </li>
@@ -53,7 +53,7 @@ export const Breadcrumb: React.FC = () => {
                   ) : (
                     <Link
                       to={routeTo as any}
-                      className="hover:text-amber transition-colors"
+                      className="hover-underline"
                     >
                       {name.replace(/-/g, " ")}
                     </Link>

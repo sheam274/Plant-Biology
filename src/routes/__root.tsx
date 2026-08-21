@@ -7,7 +7,25 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, type ReactNode, useLayoutEffect } from "react";
+
+function ViewTransitions() {
+  const router = useRouter();
+
+  useLayoutEffect(() => {
+    if (!document.startViewTransition) return;
+
+    const unsubscribe = router.subscribe('onBeforeNavigate', () => {
+      document.startViewTransition(() => {
+        // The view transition will happen when the DOM updates
+      });
+    });
+
+    return () => unsubscribe();
+  }, [router]);
+
+  return null;
+}
 
 import appCss from "../styles.css?url";
 import { ThemeProvider } from "../contexts/ThemeContext";
@@ -136,6 +154,7 @@ function RootComponent() {
       <ThemeProvider>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
+        <ViewTransitions />
         <Toaster position="bottom-right" />
       </ThemeProvider>
     </QueryClientProvider>

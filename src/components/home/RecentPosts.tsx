@@ -16,10 +16,11 @@ export const RecentPosts: React.FC = () => {
           align="left"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="focus-grid grid grid-cols-1 md:grid-cols-3 gap-6">
           {posts.slice(0, 3).map((post) => (
             <SpecimenCard
               key={post.id}
+              className="focus-item"
               catalogId={post.slug}
               title={post.title}
               description={post.excerpt || ""}
@@ -28,7 +29,7 @@ export const RecentPosts: React.FC = () => {
                 <span className="mono-data text-[10px] text-primary-soft">
                   {post.published_at ? new Date(post.published_at).toLocaleDateString() : 'Draft'}
                 </span>
-                <Link to={`/blog/${post.slug}` as any} className="text-[10px] mono-data text-amber hover:underline">READ ENTRY</Link>
+                <Link to={`/blog/${post.slug}` as any} className="text-[10px] mono-data text-amber hover-underline">READ ENTRY</Link>
               </div>
             </SpecimenCard>
           ))}

@@ -1,12 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
+import { SpecimenCard } from "../shared/SpecimenCard";
 
 export const Hero: React.FC = () => {
   return (
     <section className="relative pt-20 pb-20 overflow-hidden min-h-[85vh] flex items-center">
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl">
+      <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-7 max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -28,7 +29,7 @@ export const Hero: React.FC = () => {
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/research"
-                className="px-8 py-4 bg-primary text-bg font-medium hover:bg-primary-soft transition-colors flex items-center gap-2 group mono-data uppercase tracking-wider text-sm"
+                className="px-8 py-4 bg-primary text-bg font-medium btn-magnetic cta-border transition-colors flex items-center gap-2 group mono-data uppercase tracking-wider text-sm"
               >
                 Explore Research Areas
                 <motion.span
@@ -40,17 +41,40 @@ export const Hero: React.FC = () => {
               </Link>
               <Link
                 to="/publications"
-                className="px-8 py-4 border border-line text-primary font-medium hover:bg-surface transition-colors mono-data uppercase tracking-wider text-sm"
+                className="px-8 py-4 border border-line text-primary font-medium btn-magnetic transition-colors mono-data uppercase tracking-wider text-sm"
               >
                 View Publications
               </Link>
             </div>
           </motion.div>
         </div>
+        <div className="lg:col-span-5 hidden lg:block">
+          <SpecimenCard
+            variant="glass"
+            catalogId="CGPBL · DATA-00"
+            title="Active Research"
+            className="p-8"
+          >
+            <div className="space-y-6 mt-4">
+              <div className="flex justify-between items-end border-b border-line pb-2">
+                <span className="mono-data text-[10px] text-primary-soft">TRACKS</span>
+                <span className="text-xl font-display text-primary">04</span>
+              </div>
+              <div className="flex justify-between items-end border-b border-line pb-2">
+                <span className="mono-data text-[10px] text-primary-soft">PUBLICATIONS</span>
+                <span className="text-xl font-display text-primary">150+</span>
+              </div>
+              <div className="flex justify-between items-end border-b border-line pb-2">
+                <span className="mono-data text-[10px] text-primary-soft">ESTABLISHED</span>
+                <span className="text-xl font-display text-primary">2012</span>
+              </div>
+            </div>
+          </SpecimenCard>
+        </div>
       </div>
 
       {/* Signature Root SVG Animation */}
-      <div className="absolute top-0 right-0 w-full h-full md:w-1/2 -z-10 opacity-20 pointer-events-none">
+      <div className="absolute top-0 right-0 w-full h-full md:w-1/2 -z-10 opacity-30 pointer-events-none">
         <svg
           viewBox="0 0 500 800"
           className="w-full h-full"
