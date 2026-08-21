@@ -22,9 +22,9 @@ export const MemberCard: React.FC<MemberCardProps> = ({ member }) => {
             <motion.img 
               src={member.photo_url} 
               alt={member.full_name}
-              className="w-full h-full object-cover grayscale transition-all duration-500"
+              className="w-full h-full object-cover transition-all duration-500 [filter:grayscale(100%)] group-hover:[filter:grayscale(0%)]"
               variants={{
-                hover: { scale: 1.04, grayscale: 0 }
+                hover: { scale: 1.04 }
               }}
             />
           ) : (
