@@ -14,7 +14,7 @@ export const Hero: React.FC = () => {
           >
             <div className="mono-data text-xs text-amber mb-6 flex items-center gap-2">
               <span className="w-8 h-[1px] bg-amber" />
-              GENETIC LEDGER · V.2024
+              GENETIC LEDGER · V.2026
             </div>
             <h1 className="text-5xl md:text-7xl font-display text-primary leading-[1.1] mb-8">
               Cultivating Bangladesh's{" "}
