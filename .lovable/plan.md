@@ -1,25 +1,19 @@
 '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
 
-add this two theme Day mode (default, tokens from the first prompt):
+also add this theme --bg: #10160F
 
---bg: #FAF8F1
---surface: #F1EDE0
---ink: #16241C
---primary: #1F3D2B
---accent-amber: #C98A2C
---accent-teal: #2E6E62
---line: #D8D2C0
---highlight: #8FBF3F
-
-Night mode (new — add this):
-
---bg: #10160F
 --surface: #171E15
+
 --ink: #EDE9DC
+
 --primary: #7FBF8A       /* chlorophyll lightened for dark-bg contrast */
+
 --accent-amber: #E3A94A  /* warmer/brighter amber, reads like a lamp glow */
+
 --accent-teal: #4E9C8C
+
 --line: #2B3327
+
 --highlight: #A6E05A
 
 Toggle lives top-right of the navbar as a small sun/leaf-morph icon (see Section 3). Persist the choice in localStorage; respect prefers-color-scheme as the initial default only, then let the explicit toggle win.
