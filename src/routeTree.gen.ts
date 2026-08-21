@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as CollaborationsRouteImport } from './routes/collaborations'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as OutreachRouteImport } from './routes/outreach'
 import { Route as PeopleRouteImport } from './routes/people'
@@ -53,6 +54,11 @@ const AuthRoute = AuthRouteImport.update({
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollaborationsRoute = CollaborationsRouteImport.update({
+  id: '/collaborations',
+  path: '/collaborations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -150,6 +156,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
+  '/collaborations': typeof CollaborationsRoute
   '/gallery': typeof GalleryRoute
   '/outreach': typeof OutreachRoute
   '/people': typeof PeopleRoute
@@ -172,6 +179,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
+  '/collaborations': typeof CollaborationsRoute
   '/gallery': typeof GalleryRoute
   '/outreach': typeof OutreachRoute
   '/people': typeof PeopleRoute
@@ -195,6 +203,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
+  '/collaborations': typeof CollaborationsRoute
   '/gallery': typeof GalleryRoute
   '/outreach': typeof OutreachRoute
   '/people': typeof PeopleRoute
@@ -219,6 +228,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/blog'
+    | '/collaborations'
     | '/gallery'
     | '/outreach'
     | '/people'
@@ -241,6 +251,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/blog'
+    | '/collaborations'
     | '/gallery'
     | '/outreach'
     | '/people'
@@ -263,6 +274,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/blog'
+    | '/collaborations'
     | '/gallery'
     | '/outreach'
     | '/people'
@@ -287,6 +299,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   BlogRoute: typeof BlogRoute
+  CollaborationsRoute: typeof CollaborationsRoute
   GalleryRoute: typeof GalleryRoute
   OutreachRoute: typeof OutreachRoute
   PeopleRoute: typeof PeopleRoute
@@ -329,6 +342,13 @@ declare module '@tanstack/react-router' {
       path: '/blog'
       fullPath: '/blog'
       preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collaborations': {
+      id: '/collaborations'
+      path: '/collaborations'
+      fullPath: '/collaborations'
+      preLoaderRoute: typeof CollaborationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -496,6 +516,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   BlogRoute: BlogRoute,
+  CollaborationsRoute: CollaborationsRoute,
   GalleryRoute: GalleryRoute,
   OutreachRoute: OutreachRoute,
   PeopleRoute: PeopleRoute,
