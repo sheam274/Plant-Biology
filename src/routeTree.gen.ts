@@ -15,6 +15,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as CollaborationsRouteImport } from './routes/collaborations'
+import { Route as DesignSystemRouteImport } from './routes/design-system'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as OutreachRouteImport } from './routes/outreach'
 import { Route as PeopleRouteImport } from './routes/people'
@@ -61,6 +62,11 @@ const BlogRoute = BlogRouteImport.update({
 const CollaborationsRoute = CollaborationsRouteImport.update({
   id: '/collaborations',
   path: '/collaborations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignSystemRoute = DesignSystemRouteImport.update({
+  id: '/design-system',
+  path: '/design-system',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
   '/collaborations': typeof CollaborationsRoute
+  '/design-system': typeof DesignSystemRoute
   '/gallery': typeof GalleryRoute
   '/outreach': typeof OutreachRoute
   '/people': typeof PeopleRoute
@@ -194,6 +201,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
   '/collaborations': typeof CollaborationsRoute
+  '/design-system': typeof DesignSystemRoute
   '/gallery': typeof GalleryRoute
   '/outreach': typeof OutreachRoute
   '/people': typeof PeopleRoute
@@ -220,6 +228,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
   '/collaborations': typeof CollaborationsRoute
+  '/design-system': typeof DesignSystemRoute
   '/gallery': typeof GalleryRoute
   '/outreach': typeof OutreachRoute
   '/people': typeof PeopleRoute
@@ -247,6 +256,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/blog'
     | '/collaborations'
+    | '/design-system'
     | '/gallery'
     | '/outreach'
     | '/people'
@@ -272,6 +282,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/blog'
     | '/collaborations'
+    | '/design-system'
     | '/gallery'
     | '/outreach'
     | '/people'
@@ -297,6 +308,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/blog'
     | '/collaborations'
+    | '/design-system'
     | '/gallery'
     | '/outreach'
     | '/people'
@@ -324,6 +336,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BlogRoute: typeof BlogRoute
   CollaborationsRoute: typeof CollaborationsRoute
+  DesignSystemRoute: typeof DesignSystemRoute
   GalleryRoute: typeof GalleryRoute
   OutreachRoute: typeof OutreachRoute
   PeopleRoute: typeof PeopleRoute
@@ -375,6 +388,13 @@ declare module '@tanstack/react-router' {
       path: '/collaborations'
       fullPath: '/collaborations'
       preLoaderRoute: typeof CollaborationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design-system': {
+      id: '/design-system'
+      path: '/design-system'
+      fullPath: '/design-system'
+      preLoaderRoute: typeof DesignSystemRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -557,6 +577,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BlogRoute: BlogRoute,
   CollaborationsRoute: CollaborationsRoute,
+  DesignSystemRoute: DesignSystemRoute,
   GalleryRoute: GalleryRoute,
   OutreachRoute: OutreachRoute,
   PeopleRoute: PeopleRoute,
