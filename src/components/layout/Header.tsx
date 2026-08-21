@@ -127,10 +127,10 @@ export const Header: React.FC = () => {
           </button>
 
           <Link
-            to="/"
+            to="/about"
             className="hidden sm:block px-5 py-2 bg-amber text-bg text-sm font-medium hover:brightness-110 transition-all uppercase tracking-wider mono-data"
           >
-            Contact Us
+            Laboratory Vision
           </Link>
 
           {/* Mobile hamburger */}
@@ -296,11 +296,11 @@ export const Header: React.FC = () => {
               ))}
             </div>
             <Link 
-              to="/" 
+              to="/about" 
               className="p-6 bg-amber text-bg text-center font-bold uppercase tracking-widest"
               onClick={() => setIsMobileOpen(false)}
             >
-              Contact Us
+              Laboratory Vision
             </Link>
           </motion.div>
         )}
