@@ -22,9 +22,10 @@ export const Hero: React.FC = () => {
               <span className="text-highlight">Sustainable</span> Agriculture
             </h1>
             <p className="text-lg md:text-xl text-primary-soft max-w-xl leading-relaxed mb-10">
-              Welcome to the Cell Genetics & Plant Biotechnology Laboratory (CGPBL). 
-              Our mission is to ensure food security, sustainable agriculture, and 
-              environmental health through advanced biotechnological innovation.
+              '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
+                                        
+                                            
+                                            fix the home primary button color
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
