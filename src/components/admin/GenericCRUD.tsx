@@ -31,7 +31,8 @@ export function GenericCRUD<T extends { id: string }>({
   const { data: items, isLoading } = useQuery({
     queryKey: [tableName],
     queryFn: async () => {
-      const { data, error } = await supabase.from(tableName).select('*').order('created_at', { ascending: false } as any);
+      // @ts-ignore - Dynamic table name access
+      const { data, error } = await supabase.from(tableName as any).select('*');
       if (error) throw error;
       return data as T[];
     }
@@ -39,7 +40,8 @@ export function GenericCRUD<T extends { id: string }>({
 
   const upsertMutation = useMutation({
     mutationFn: async (payload: Partial<T>) => {
-      const { error } = await supabase.from(tableName).upsert(payload as any);
+      // @ts-ignore - Dynamic table name access
+      const { error } = await supabase.from(tableName as any).upsert(payload as any);
       if (error) throw error;
     },
     onSuccess: () => {
@@ -55,7 +57,8 @@ export function GenericCRUD<T extends { id: string }>({
 
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      const { error } = await supabase.from(tableName).delete().eq('id', id);
+      // @ts-ignore - Dynamic table name access
+      const { error } = await supabase.from(tableName as any).delete().eq('id', id);
       if (error) throw error;
     },
     onSuccess: () => {
@@ -94,7 +97,7 @@ export function GenericCRUD<T extends { id: string }>({
               <Plus size={16} /> ADD NEW ENTRY
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-2xl bg-white border-line">
+          <DialogContent className="max-w-2xl bg-white border-line max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="Fraunces text-2xl text-primary">
                 {editingItem ? 'Edit Entry' : 'New Entry'}
@@ -107,18 +110,24 @@ export function GenericCRUD<T extends { id: string }>({
                   {field.options ? (
                     <select 
                       name={field.key as string} 
-                      className="w-full border border-line p-2 rounded-sm text-sm"
+                      className="w-full border border-line p-2 rounded-sm text-sm bg-white"
                       defaultValue={editingItem ? (editingItem[field.key] as any) : defaultValues[field.key]}
                     >
                       {field.options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                     </select>
+                  ) : field.type === 'textarea' ? (
+                    <textarea 
+                      name={field.key as string}
+                      defaultValue={editingItem ? (editingItem[field.key] as any) : defaultValues[field.key]}
+                      className="w-full border border-line p-2 rounded-sm text-sm min-h-[100px]"
+                    />
                   ) : (
                     <Input 
                       name={field.key as string} 
                       type={field.type || 'text'}
                       defaultValue={editingItem ? (editingItem[field.key] as any) : defaultValues[field.key]}
                       className="border-line focus:ring-amber"
-                      required={field.key !== 'parent_program_id' && field.key !== 'alumni_year' && field.key !== 'bio' && field.key !== 'photo_url' && field.key !== 'email'}
+                      required={!['parent_program_id', 'alumni_year', 'bio', 'photo_url', 'email', 'cover_image_url', 'doi_or_link', 'abstract', 'logo_url', 'website_url', 'description', 'excerpt', 'published_at', 'author_id', 'event_date', 'taken_at'].includes(field.key as string)}
                     />
                   )}
                 </div>
@@ -137,7 +146,7 @@ export function GenericCRUD<T extends { id: string }>({
         </Dialog>
       </div>
 
-      <div className="border border-line rounded-sm bg-white overflow-hidden">
+      <div className="border border-line rounded-sm bg-white overflow-x-auto">
         <Table>
           <TableHeader className="bg-surface/50">
             <TableRow className="border-line">
@@ -157,7 +166,7 @@ export function GenericCRUD<T extends { id: string }>({
             ) : items?.map((item) => (
               <TableRow key={item.id} className="border-line hover:bg-surface/20">
                 {columns.map(col => (
-                  <TableCell key={col.key as string} className="text-sm text-primary">
+                  <TableCell key={col.key as string} className="text-sm text-primary max-w-[200px] truncate">
                     {col.render ? col.render(item[col.key]) : (item[col.key] as any)}
                   </TableCell>
                 ))}
@@ -173,11 +182,11 @@ export function GenericCRUD<T extends { id: string }>({
                   <Button 
                     variant="ghost" 
                     size="icon"
-                    onClick={() => { if(confirm('Delete this entry?')) deleteMutation.mutate(item.id); }}
+                    onClick={() => { if(confirm('Delete this entry?')) { setIsDeleting(item.id); deleteMutation.mutate(item.id); } }}
                     disabled={isDeleting === item.id}
                     className="h-8 w-8 text-primary-soft hover:text-red-500"
                   >
-                    <Trash2 size={14} />
+                    {isDeleting === item.id ? <Loader2 size={14} className="animate-spin" /> : <Trash2 size={14} />}
                   </Button>
                 </TableCell>
               </TableRow>
