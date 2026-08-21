@@ -17,6 +17,7 @@ export type LabMemberCategory = 'current' | 'alumni';
 
 export interface LabMember {
   id: string;
+  catalog_code: string;
   full_name: string;
   role: LabMemberRole;
   category: LabMemberCategory;

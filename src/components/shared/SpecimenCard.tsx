@@ -5,7 +5,7 @@ import { cn } from "../../lib/utils";
 interface SpecimenCardProps {
   catalogId: string;
   title: string;
-  description: string;
+  description?: string;
   className?: string;
   children?: React.ReactNode;
 }
@@ -40,7 +40,7 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({
       </div>
 
       <h3 className="text-lg font-display mb-2 text-primary">{title}</h3>
-      <p className="text-sm text-ink leading-relaxed flex-grow">{description}</p>
+      {description && <p className="text-sm text-ink leading-relaxed flex-grow">{description}</p>}
       
       {children}
 
