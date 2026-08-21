@@ -16,7 +16,7 @@ export const ResearchGrid: React.FC = () => {
         />
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-line border-t border-b border-line">
-          {areas.map((area) => (
+          {areas.filter(a => a.track === 'Ongoing Research').slice(0, 3).map((area) => (
             <SpecimenCard
               key={area.id}
               catalogId={area.catalog_code}
