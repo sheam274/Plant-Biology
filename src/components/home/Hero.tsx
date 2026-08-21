@@ -14,16 +14,16 @@ export const Hero: React.FC = () => {
           >
             <div className="mono-data text-xs text-amber mb-6 flex items-center gap-2">
               <span className="w-8 h-[1px] bg-amber" />
-              GENETIC LEDGER · V.2026
+              CGPBL · EST. 2012 · DHAKA
             </div>
             <h1 className="text-5xl md:text-7xl font-display text-primary leading-[1.1] mb-8">
-              Cultivating Bangladesh's{" "}
-              <span className="text-highlight">Genetic</span> Future
+              Genomic Solutions for <br />
+              <span className="text-highlight">Sustainable</span> Agriculture
             </h1>
             <p className="text-lg md:text-xl text-primary-soft max-w-xl leading-relaxed mb-10">
-              Advancing plant biotechnology and genetic engineering through 
-              rigorous research, computational modeling, and field-tested 
-              innovation at Jahangirnagar University.
+              Welcome to the Cell Genetics & Plant Biotechnology Laboratory (CGPBL). 
+              Our mission is to ensure food security, sustainable agriculture, and 
+              environmental health through advanced biotechnological innovation.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link

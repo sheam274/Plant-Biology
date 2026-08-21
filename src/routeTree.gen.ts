@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as CollaborationsRouteImport } from './routes/collaborations'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as OutreachRouteImport } from './routes/outreach'
 import { Route as PeopleRouteImport } from './routes/people'
@@ -30,6 +31,8 @@ import { Route as AuthenticatedAdminNewsletter_subscribersRouteImport } from './
 import { Route as AuthenticatedAdminOutreach_programsRouteImport } from './routes/_authenticated/admin/outreach_programs'
 import { Route as AuthenticatedAdminPublicationsRouteImport } from './routes/_authenticated/admin/publications'
 import { Route as AuthenticatedAdminResearch_programsRouteImport } from './routes/_authenticated/admin/research_programs'
+import { Route as ApiPublicContactRouteImport } from './routes/api/public/contact'
+import { Route as ApiPublicNewsletterRouteImport } from './routes/api/public/newsletter'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -53,6 +56,11 @@ const AuthRoute = AuthRouteImport.update({
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollaborationsRoute = CollaborationsRouteImport.update({
+  id: '/collaborations',
+  path: '/collaborations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -144,12 +152,23 @@ const AuthenticatedAdminResearch_programsRoute =
     path: '/research_programs',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const ApiPublicContactRoute = ApiPublicContactRouteImport.update({
+  id: '/api/public/contact',
+  path: '/api/public/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicNewsletterRoute = ApiPublicNewsletterRouteImport.update({
+  id: '/api/public/newsletter',
+  path: '/api/public/newsletter',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
+  '/collaborations': typeof CollaborationsRoute
   '/gallery': typeof GalleryRoute
   '/outreach': typeof OutreachRoute
   '/people': typeof PeopleRoute
@@ -165,6 +184,8 @@ export interface FileRoutesByFullPath {
   '/admin/outreach_programs': typeof AuthenticatedAdminOutreach_programsRoute
   '/admin/publications': typeof AuthenticatedAdminPublicationsRoute
   '/admin/research_programs': typeof AuthenticatedAdminResearch_programsRoute
+  '/api/public/contact': typeof ApiPublicContactRoute
+  '/api/public/newsletter': typeof ApiPublicNewsletterRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -172,6 +193,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
+  '/collaborations': typeof CollaborationsRoute
   '/gallery': typeof GalleryRoute
   '/outreach': typeof OutreachRoute
   '/people': typeof PeopleRoute
@@ -186,6 +208,8 @@ export interface FileRoutesByTo {
   '/admin/outreach_programs': typeof AuthenticatedAdminOutreach_programsRoute
   '/admin/publications': typeof AuthenticatedAdminPublicationsRoute
   '/admin/research_programs': typeof AuthenticatedAdminResearch_programsRoute
+  '/api/public/contact': typeof ApiPublicContactRoute
+  '/api/public/newsletter': typeof ApiPublicNewsletterRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
@@ -195,6 +219,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
+  '/collaborations': typeof CollaborationsRoute
   '/gallery': typeof GalleryRoute
   '/outreach': typeof OutreachRoute
   '/people': typeof PeopleRoute
@@ -210,6 +235,8 @@ export interface FileRoutesById {
   '/_authenticated/admin/outreach_programs': typeof AuthenticatedAdminOutreach_programsRoute
   '/_authenticated/admin/publications': typeof AuthenticatedAdminPublicationsRoute
   '/_authenticated/admin/research_programs': typeof AuthenticatedAdminResearch_programsRoute
+  '/api/public/contact': typeof ApiPublicContactRoute
+  '/api/public/newsletter': typeof ApiPublicNewsletterRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -219,6 +246,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/blog'
+    | '/collaborations'
     | '/gallery'
     | '/outreach'
     | '/people'
@@ -234,6 +262,8 @@ export interface FileRouteTypes {
     | '/admin/outreach_programs'
     | '/admin/publications'
     | '/admin/research_programs'
+    | '/api/public/contact'
+    | '/api/public/newsletter'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -241,6 +271,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/blog'
+    | '/collaborations'
     | '/gallery'
     | '/outreach'
     | '/people'
@@ -255,6 +286,8 @@ export interface FileRouteTypes {
     | '/admin/outreach_programs'
     | '/admin/publications'
     | '/admin/research_programs'
+    | '/api/public/contact'
+    | '/api/public/newsletter'
     | '/admin'
   id:
     | '__root__'
@@ -263,6 +296,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/blog'
+    | '/collaborations'
     | '/gallery'
     | '/outreach'
     | '/people'
@@ -278,6 +312,8 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/outreach_programs'
     | '/_authenticated/admin/publications'
     | '/_authenticated/admin/research_programs'
+    | '/api/public/contact'
+    | '/api/public/newsletter'
     | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -287,11 +323,14 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   BlogRoute: typeof BlogRoute
+  CollaborationsRoute: typeof CollaborationsRoute
   GalleryRoute: typeof GalleryRoute
   OutreachRoute: typeof OutreachRoute
   PeopleRoute: typeof PeopleRoute
   PublicationsRoute: typeof PublicationsRoute
   ResearchRoute: typeof ResearchRoute
+  ApiPublicContactRoute: typeof ApiPublicContactRoute
+  ApiPublicNewsletterRoute: typeof ApiPublicNewsletterRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -329,6 +368,13 @@ declare module '@tanstack/react-router' {
       path: '/blog'
       fullPath: '/blog'
       preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collaborations': {
+      id: '/collaborations'
+      path: '/collaborations'
+      fullPath: '/collaborations'
+      preLoaderRoute: typeof CollaborationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -443,6 +489,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminResearch_programsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/api/public/contact': {
+      id: '/api/public/contact'
+      path: '/api/public/contact'
+      fullPath: '/api/public/contact'
+      preLoaderRoute: typeof ApiPublicContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/newsletter': {
+      id: '/api/public/newsletter'
+      path: '/api/public/newsletter'
+      fullPath: '/api/public/newsletter'
+      preLoaderRoute: typeof ApiPublicNewsletterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -496,11 +556,14 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   BlogRoute: BlogRoute,
+  CollaborationsRoute: CollaborationsRoute,
   GalleryRoute: GalleryRoute,
   OutreachRoute: OutreachRoute,
   PeopleRoute: PeopleRoute,
   PublicationsRoute: PublicationsRoute,
   ResearchRoute: ResearchRoute,
+  ApiPublicContactRoute: ApiPublicContactRoute,
+  ApiPublicNewsletterRoute: ApiPublicNewsletterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

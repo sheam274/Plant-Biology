@@ -5,7 +5,7 @@ import { useBlogPosts } from "../../hooks/useBlogPosts";
 import { SpecimenCard } from "../shared/SpecimenCard";
 
 export const RecentPosts: React.FC = () => {
-  const posts = useBlogPosts();
+  const { data: posts = [] } = useBlogPosts();
 
   return (
     <section className="py-24 bg-surface/30">
@@ -17,7 +17,7 @@ export const RecentPosts: React.FC = () => {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {posts.map((post) => (
+          {posts.slice(0, 3).map((post) => (
             <SpecimenCard
               key={post.id}
               catalogId={post.slug}
@@ -28,7 +28,7 @@ export const RecentPosts: React.FC = () => {
                 <span className="mono-data text-[10px] text-primary-soft">
                   {post.published_at ? new Date(post.published_at).toLocaleDateString() : 'Draft'}
                 </span>
-                <Link to="/" className="text-[10px] mono-data text-amber hover:underline">READ ENTRY</Link>
+                <Link to={`/blog/${post.slug}` as any} className="text-[10px] mono-data text-amber hover:underline">READ ENTRY</Link>
               </div>
             </SpecimenCard>
           ))}
