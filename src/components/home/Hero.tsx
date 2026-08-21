@@ -31,7 +31,7 @@ export const Hero: React.FC = () => {
                 to="/research"
                 className="px-8 py-4 bg-primary text-bg font-medium btn-magnetic cta-border transition-colors flex items-center gap-2 group mono-data uppercase tracking-wider text-sm"
               >
-                Explore Research Areas
+                <span className="relative z-10" style={{ color: 'var(--bg)', opacity: 1, visibility: 'visible' }}>Explore Our Research</span>
                 <motion.span
                   animate={{ x: [0, 5, 0] }}
                   transition={{ repeat: Infinity, duration: 1.5 }}
