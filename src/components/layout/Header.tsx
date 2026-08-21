@@ -294,16 +294,35 @@ export const Header: React.FC = () => {
               </button>
             </div>
             <div className="flex-grow overflow-y-auto p-4 space-y-4">
-              {NAV_ITEMS.map(item => (
-                <Link 
-                  key={item.href} 
-                  to={item.href as any} 
-                  className="block text-2xl font-display text-primary"
-                  onClick={() => setIsMobileOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              <MobileNavSection 
+                title="Laboratory Vision" 
+                links={[
+                  { to: "/about", label: "Our Chronicle" },
+                  { to: "/about", label: "Core Ethics" },
+                  { to: "/people", label: "Current Roster" },
+                  { to: "/people", label: "Alumni Ledger" }
+                ]}
+                onClose={() => setIsMobileOpen(false)}
+              />
+              <MobileNavSection 
+                title="Genomic Catalog" 
+                links={[
+                  { to: "/research", label: "Transformation Facility" },
+                  { to: "/research", label: "Ongoing Programs" },
+                  { to: "/publications", label: "Scientific Ledger" },
+                  { to: "/gallery", label: "Visual Archive" }
+                ]}
+                onClose={() => setIsMobileOpen(false)}
+              />
+              <MobileNavSection 
+                title="Public Outreach" 
+                links={[
+                  { to: "/outreach", label: "Training Seminars" },
+                  { to: "/outreach", label: "Foldscope Program" },
+                  { to: "/blog", label: "Laboratory Log" }
+                ]}
+                onClose={() => setIsMobileOpen(false)}
+              />
             </div>
             <Link 
               to="/about" 

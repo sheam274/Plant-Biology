@@ -38,7 +38,7 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({
         "hover:border-amber",
         variants[variant],
         "container-type-inline-size",
-        className
+        className ?? ""
       )}
     >
       <div className="flex justify-between items-start mb-6">
