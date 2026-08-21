@@ -1,9 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden min-h-[80vh] flex items-center">
+    <section className="relative pt-20 pb-20 overflow-hidden min-h-[85vh] flex items-center">
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">
           <motion.div
@@ -25,7 +26,10 @@ export const Hero: React.FC = () => {
               innovation at Jahangirnagar University.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="px-8 py-4 bg-primary text-bg font-medium hover:bg-primary-soft transition-colors flex items-center gap-2 group">
+              <Link
+                to="/research"
+                className="px-8 py-4 bg-primary text-bg font-medium hover:bg-primary-soft transition-colors flex items-center gap-2 group mono-data uppercase tracking-wider text-sm"
+              >
                 Explore Research Areas
                 <motion.span
                   animate={{ x: [0, 5, 0] }}
@@ -33,10 +37,13 @@ export const Hero: React.FC = () => {
                 >
                   →
                 </motion.span>
-              </button>
-              <button className="px-8 py-4 border border-line text-primary font-medium hover:bg-surface transition-colors">
+              </Link>
+              <Link
+                to="/publications"
+                className="px-8 py-4 border border-line text-primary font-medium hover:bg-surface transition-colors mono-data uppercase tracking-wider text-sm"
+              >
                 View Publications
-              </button>
+              </Link>
             </div>
           </motion.div>
         </div>
