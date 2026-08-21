@@ -43,14 +43,14 @@ function OutreachPage() {
                   <div key={i} className="h-[300px] bg-surface animate-pulse border border-line" />
                 ))}
               </div>
-            ) : programs.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 focus-grid">
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {programs.map(program => (
                   <SpecimenCard
                     key={program.id}
                     catalogId={`OUT-${program.program_type.slice(0, 3).toUpperCase()}`}
                     title={program.title}
-                    className="h-full focus-item"
+                    className="h-full"
                   >
                     <div className="flex flex-col gap-6 mt-4">
                       {program.cover_image_url && (
@@ -84,10 +84,6 @@ function OutreachPage() {
                     </div>
                   </SpecimenCard>
                 ))}
-              </div>
-            ) : (
-              <div className="p-16 border border-dashed border-line text-center">
-                <p className="italic text-primary-soft text-sm">No outreach programs or training seminars are currently scheduled. Check back for upcoming frugal science workshops and genomic internships.</p>
               </div>
             )}
             

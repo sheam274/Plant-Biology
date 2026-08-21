@@ -48,16 +48,10 @@
 
   /* Animation */
   --animate-shine: shine 0.5s ease-out;
-  --animate-spin-slow: spin 3s linear infinite;
 
   @keyframes shine {
     from { transform: translateX(-100%) rotate(45deg); }
     to { transform: translateX(200%) rotate(45deg); }
-  }
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
   }
 }
 

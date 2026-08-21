@@ -62,17 +62,11 @@ function PublicationsPage() {
                         </span>
                       </div>
                       
-                      {filtered.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 focus-grid">
-                          {filtered.map(pub => (
-                            <PublicationCard key={pub.id} publication={pub} className="focus-item" />
-                          ))}
-                        </div>
-                      ) : (
-                        <div className="p-8 border border-dashed border-line text-center italic text-primary-soft text-sm">
-                          No publications recorded for this period in the scientific ledger.
-                        </div>
-                      )}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {filtered.map(pub => (
+                          <PublicationCard key={pub.id} publication={pub} />
+                        ))}
+                      </div>
                     </div>
                   );
                 })}

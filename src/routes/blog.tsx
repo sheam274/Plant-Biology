@@ -43,15 +43,15 @@ function BlogPage() {
                   <div key={i} className="h-[300px] bg-surface animate-pulse border border-line" />
                 ))}
               </div>
-            ) : posts.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 focus-grid">
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {posts.map(post => (
                   <SpecimenCard
                     key={post.id}
                     catalogId={post.slug}
                     title={post.title}
                     description={post.excerpt || ""}
-                    className="h-full focus-item"
+                    className="h-full"
                   >
                     <div className="flex flex-col gap-6 mt-4">
                       {post.cover_image_url && (
@@ -82,10 +82,6 @@ function BlogPage() {
                     </div>
                   </SpecimenCard>
                 ))}
-              </div>
-            ) : (
-              <div className="p-16 border border-dashed border-line text-center">
-                <p className="italic text-primary-soft text-sm">The laboratory logbook is currently empty. New genomic insights and announcements are recorded here as research progresses.</p>
               </div>
             )}
           </motion.div>
