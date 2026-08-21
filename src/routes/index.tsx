@@ -33,27 +33,7 @@ function Home() {
           '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            The primary CTA button in the Home page hero (next to the "VIEW PUBLICATIONS" button) is still rendering with no invisible label. Do not guess again — do this in order:
-
-1. Find the exact component file rendering this specific button (the hero's primary CTA, left of "VIEW PUBLICATIONS") and paste its current code back to me in your response before changing anything, including the JSX/text content, the className or style props, and any parent wrapper that might be affecting it.
-
-2. Check the button's TEXT CONTENT first, not just its styling — confirm the label string "Explore Our Research" is actually present as children/text inside the component. If the string is missing, empty, or was left as a placeholder variable that was never filled in, that's the bug — fix it by setting the button's label to exactly: Explore Our Research
-
-3. If the text content is present but still not visible, then check styling in this order and fix whichever is true:
-
-   - `color` on the button or its text span resolves to `transparent`
-
-   - `color` matches the button's own `background`/`background-color` (same token used for both)
-
-   - a `background-clip: text` / `-webkit-background-clip: text` rule is applied to this button when it shouldn't be (that rule makes text invisible unless paired with a gradient text-fill color — remove it from this button entirely, it does not belong on a solid or bordered button)
-
-   - the text span has `opacity: 0`, `visibility: hidden`, or `font-size: 0` from a leftover animation/transition state
-
-   - the text is being rendered but positioned outside the visible button box (z-index or absolute positioning bug)
-
-4. Apply the fix, then explicitly confirm back to me: "Text content is now: Explore Our Research, color is set to [token], and it is visible against the button's background in both Day and Night mode."
-
-Do not respond with a general "fixed it" — show me the before code, the specific bug you found, and the after code.
+                                            Implement an automated test that verifies the Home hero primary CTA label "Explore Our Research" is visible with correct contrast in both Day and Night mode.
         </div>
         <Breadcrumb />
         <AnimatePresence mode="wait">
