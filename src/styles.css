@@ -183,7 +183,7 @@
   .cta-border {
     position: relative;
     border: 1px solid transparent;
-    background: linear-gradient(var(--bg), var(--bg)) padding-box,
+    background: var(--color-primary) padding-box,
                 linear-gradient(45deg, var(--amber), var(--teal), var(--highlight)) border-box;
   }
 
