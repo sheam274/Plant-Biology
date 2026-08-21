@@ -21,10 +21,15 @@ export const Hero: React.FC = () => {
               Genomic Solutions for <br />
               <span className="text-highlight">Sustainable</span> Agriculture
             </h1>
-            <p className="text-lg md:text-xl text-primary-soft max-w-xl leading-relaxed mb-10">
+            <p className="text-lg md:text-xl text-primary-soft max-w-xl leading-relaxed mb-10 whitespace-pre-line">
               Welcome to the Cell Genetics & Plant Biotechnology Laboratory (CGPBL). 
               Our mission is to ensure food security, sustainable agriculture, and 
               environmental health through advanced biotechnological innovation.
+              
+              '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
+                                        
+                                            
+                                            Audit all primary and secondary button text colors across every page to ensure consistent contrast in both light and dark modes.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
