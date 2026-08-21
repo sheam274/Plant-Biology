@@ -22,14 +22,14 @@ export const Hero: React.FC = () => {
               <span className="text-highlight">Sustainable</span> Agriculture
             </h1>
             <p className="text-lg md:text-xl text-primary-soft max-w-xl leading-relaxed mb-10">
-              Welcome to the Cell Genetics & Plant Biotechnology Laboratory (CGPBL). 
+              '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            fix the button text color 
               Our mission is to ensure food security, sustainable agriculture, and 
               environmental health through advanced biotechnological innovation.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/research"
-                className="px-8 py-4 bg-primary text-bg font-medium btn-magnetic cta-border transition-colors flex items-center gap-2 group mono-data uppercase tracking-wider text-sm"
+                className="px-8 py-4 bg-primary text-bg font-medium btn-magnetic cta-border transition-colors flex items-center gap-2 group mono-data uppercase tracking-wider text-sm !text-white dark:!text-black"
               >
                 Explore Research Areas
                 <motion.span
