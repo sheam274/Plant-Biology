@@ -34,7 +34,7 @@ export function GenericCRUD<T extends { id: string }>({
       // @ts-ignore - Dynamic table name access
       const { data, error } = await supabase.from(tableName as any).select('*');
       if (error) throw error;
-      return data as T[];
+      return (data as any) as T[];
     }
   });
 
