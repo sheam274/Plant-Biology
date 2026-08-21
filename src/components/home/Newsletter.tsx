@@ -38,10 +38,8 @@ export const Newsletter: React.FC = () => {
           <div className="mono-data text-[10px] text-amber mb-6">NEWSLETTER · SUB-102</div>
           <h2 className="text-3xl font-display text-primary mb-6">Stay Documented</h2>
           <p className="text-ink/70 mb-10 leading-relaxed">
-            '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
-                                        
-                                            
-                                            now i want to decorate the website with card and glass effect and hover and other advanced css.give me the prompt.also sync with whole project and make it bug free or any mismatch
+            Join our mailing list to receive verified updates on laboratory breakthroughs, 
+            upcoming seminars, and genomic research highlights.
           </p>
 
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">

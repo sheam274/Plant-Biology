@@ -12,7 +12,7 @@ export const RecentPosts: React.FC = () => {
       <div className="container mx-auto px-4">
         <SectionHeading 
           title="Recent Posts" 
-          subtitle="'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            now i want to decorate the website with card and glass effect and hover and other advanced css.give me the prompt.also sync with whole project and make it bug free or any mismatch"
+          subtitle="Updates from the laboratory, field visits, and new publication highlights."
           align="left"
         />
 
