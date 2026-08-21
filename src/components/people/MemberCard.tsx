@@ -10,7 +10,7 @@ interface MemberCardProps {
 export const MemberCard: React.FC<MemberCardProps> = ({ member }) => {
   return (
     <SpecimenCard 
-      catalogCode={member.catalog_code}
+      catalogId={member.catalog_code}
       title={member.full_name}
       className="h-full"
     >
