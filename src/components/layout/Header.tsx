@@ -42,6 +42,23 @@ export const Header: React.FC = () => {
               {item.label}
             </Link>
           ))}
+          <button
+            onClick={toggleTheme}
+            className="p-2 text-primary hover:text-amber transition-colors relative"
+            aria-label="Toggle theme"
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={theme}
+                initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+              >
+                {theme === 'day' ? <Sun size={20} /> : <Leaf size={20} />}
+              </motion.div>
+            </AnimatePresence>
+          </button>
           <Link
             to="/about"
             className="px-4 py-2 bg-primary text-bg text-sm font-medium hover:bg-primary-soft transition-colors"
@@ -50,13 +67,22 @@ export const Header: React.FC = () => {
           </Link>
         </nav>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-primary"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Nav Right Section */}
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={toggleTheme}
+            className="p-2 text-primary hover:text-amber transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === 'day' ? <Sun size={20} /> : <Leaf size={20} />}
+          </button>
+          <button
+            className="text-primary p-2"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}
