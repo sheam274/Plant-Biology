@@ -33,21 +33,7 @@ function Home() {
           '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            Bug: on the Home page hero, the primary CTA button (to the left of "VIEW PUBLICATIONS") renders its border/shape but the label text is invisible — nothing shows inside it, even though it should have a call-to-action label like "Explore Our Research."
-
-Root cause to check first: this button uses the gradient-border CTA technique from the decoration pass (a transparent border + background-image/background-clip trick to draw an animated gradient border). That technique commonly leaks into the text color rule — either the button's text color was accidentally set to `transparent` (copied from a `background-clip: text` gradient-text pattern instead of a gradient-border pattern), or the text color resolves to the same value as the button's own background/fill, making it functionally invisible even though the DOM node has content.
-
-Fix steps:
-
-1. Open the Button/CTA component used for this specific gradient-border variant and inspect its computed text color — confirm whether `color` is `transparent`, `inherit`-ing from a parent that's transparent, or matching the background exactly.
-
-2. Set its text color explicitly to a token that has real contrast against the button's fill in both Day and Night mode — var(--ink) on a light fill, or var(--bg)/var(--surface) on a solid var(--primary) fill, whichever this button variant actually uses. Do not leave it implicit/inherited.
-
-3. Confirm the gradient border is implemented as an actual border layer (e.g. two stacked backgrounds — one for the gradient border via `background-origin: border-box` + `-webkit-mask` composite, or a pseudo-element `::before` sitting behind the button) rather than anything using `background-clip: text`, which is a text-fill technique and is almost certainly what caused this — that clip mode makes text render only where the background shows through, and if applied to the wrong element it makes the label invisible instead of gradient-colored.
-
-4. Verify the fix renders correctly in both Day and Night theme, and that the label text is present in the DOM (for accessibility/screen readers) even if you can't currently see it — check whether this was a visual-only bug or whether the text was missing from markup entirely.
-
-After fixing this specific button, sweep the rest of the site for the same bug class: search every button/CTA component for any `color: transparent`, `background-clip: text` combined with a solid (non-gradient) text-color fallback, or any place text color is set equal to its own background token. Fix every instance found, and list what you found.
+                                            Fix the Home page hero primary CTA button so its label text is visible and has proper contrast in both Day and Night mode.
         </div>
         <Breadcrumb />
         <AnimatePresence mode="wait">
