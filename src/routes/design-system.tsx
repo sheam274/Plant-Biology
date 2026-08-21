@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { SpecimenCard } from '../components/shared/SpecimenCard'
-import { PageShell } from '../components/layout/PageShell'
+import { Header } from '../components/layout/Header'
+import { Footer } from '../components/layout/Footer'
 import { motion } from 'framer-motion'
 import { Dna, ArrowRight, Search, Sun, Leaf } from 'lucide-react'
 
@@ -10,7 +11,10 @@ export const Route = createFileRoute('/design-system')({
 
 function DesignSystemPage() {
   return (
-    <PageShell>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-grow pt-[76px]">
+
       <div className="container mx-auto px-4 py-20 space-y-20">
         <section>
           <h1 className="text-4xl font-display mb-8 border-b border-line pb-4">Specimen Card Variants</h1>
@@ -102,6 +106,8 @@ function DesignSystemPage() {
           </div>
         </section>
       </div>
-    </PageShell>
+      </main>
+      <Footer />
+    </div>
   )
 }
