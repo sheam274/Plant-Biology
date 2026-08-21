@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useRouterState, useLocation } from "@tanstack/react-router";
 import { Menu, X, Sun, Leaf, Search, ChevronDown, Dna } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../../contexts/ThemeContext";
@@ -24,6 +24,12 @@ export const Header: React.FC = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+
+  // Reset scroll progress on route change
+  useEffect(() => {
+    setScrollProgress(0);
+  }, [location.pathname]);
 
   // Handle Cmd+K
   useEffect(() => {

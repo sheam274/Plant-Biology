@@ -43,8 +43,11 @@ export const Newsletter: React.FC = () => {
           </p>
 
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
-            <input
-              type="email"
+            <div className="flex-grow relative">
+              <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+              <input
+                id="newsletter-email"
+                type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="COLLEAGUE@INSTITUTION.EDU"
