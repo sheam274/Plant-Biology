@@ -33,7 +33,7 @@ function Home() {
           '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            Load the security issues from the scan results and fix the selected issues.
+                                            Update the "@tanstack/react-start" dependency (currently 1.168.32) to a version that fixes its known security vulnerability: JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) — CVE-2026-59870 fix not backported (via js-yaml) (high). Update package.json and the lockfile, then verify the project still builds. If the project's only lockfile is the binary bun.lockb, regenerate it as a text lockfile by running `bun install --save-text-lockfile` so the dependency scanner can verify the fix.
         </div>
         <Breadcrumb />
         <AnimatePresence mode="wait">
