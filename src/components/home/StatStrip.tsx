@@ -40,9 +40,9 @@ export const StatStrip: React.FC = () => {
               variant="glass"
               catalogId={stat.catalog}
               title={stat.value}
-              className="border-none bg-transparent backdrop-blur-none saturate-100 shadow-none p-0 group"
+              className="group"
             >
-              <div className="relative pl-6 border-l border-line mt-4">
+              <div className="mt-4">
                 <div className="mono-data text-[10px] text-primary-soft uppercase tracking-wider mb-2">
                   {stat.label}
                 </div>
