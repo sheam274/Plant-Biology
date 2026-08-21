@@ -19,10 +19,11 @@ export const Hero: React.FC = () => {
               Cultivating Bangladesh's{" "}
               <span className="text-highlight">Genetic</span> Future
             </h1>
-            <p className="text-lg md:text-xl text-primary-soft max-w-xl leading-relaxed mb-10">
-              Advancing plant biotechnology and genetic engineering through 
-              rigorous research, computational modeling, and field-tested 
-              innovation at Jahangirnagar University.
+            <p className="text-lg md:text-xl text-primary-soft max-w-xl leading-relaxed mb-10 whitespace-pre-line">
+              {`'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
+                                        
+                                            
+                                            I have approved the plan`}
             </p>
             <div className="flex flex-wrap gap-4">
               <button className="px-8 py-4 bg-primary text-bg font-medium hover:bg-primary-soft transition-colors flex items-center gap-2 group">
