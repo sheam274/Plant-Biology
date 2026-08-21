@@ -4,7 +4,7 @@ import { SectionHeading } from "../shared/SectionHeading";
 import { useResearchAreas } from "../../hooks/useResearchAreas";
 
 export const ResearchGrid: React.FC = () => {
-  const areas = useResearchAreas();
+  const { data: areas = [] } = useResearchAreas();
 
   return (
     <section className="py-24 bg-bg">

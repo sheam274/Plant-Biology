@@ -5,7 +5,7 @@ import { useBlogPosts } from "../../hooks/useBlogPosts";
 import { SpecimenCard } from "../shared/SpecimenCard";
 
 export const RecentPosts: React.FC = () => {
-  const posts = useBlogPosts();
+  const { data: posts = [] } = useBlogPosts();
 
   return (
     <section className="py-24 bg-surface/30">
