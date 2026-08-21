@@ -18,9 +18,9 @@ export const ResearchGrid: React.FC = () => {
           {areas.map((area) => (
             <SpecimenCard
               key={area.id}
-              catalogId={area.catalogId}
+              catalogId={area.catalog_code}
               title={area.title}
-              description={area.description}
+              description={area.summary}
               className="bg-bg border-none hover:bg-surface"
             >
               <div className="mt-8 pt-6 border-t border-line/40">
