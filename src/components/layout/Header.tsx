@@ -3,6 +3,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X, Sun, Leaf, Search, ChevronDown, Dna } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../../contexts/ThemeContext";
+import { CommandPalette } from "../shared/CommandPalette";
 import { cn } from "../../lib/utils";
 
 const NAV_ITEMS = [
@@ -20,7 +21,20 @@ export const Header: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeMega, setActiveMega] = useState<string | null>(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+
+  // Handle Cmd+K
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setIsSearchOpen(prev => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
   
   // Track scroll for condensation and progress bar
   useEffect(() => {
@@ -87,6 +101,7 @@ export const Header: React.FC = () => {
         {/* Right side tools */}
         <div className="flex items-center gap-3">
           <button 
+            onClick={() => setIsSearchOpen(true)}
             className="p-2 text-primary hover:text-amber transition-colors"
             aria-label="Search"
           >
@@ -290,6 +305,8 @@ export const Header: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* Search Utility */}
+      <CommandPalette isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </header>
   );
 };

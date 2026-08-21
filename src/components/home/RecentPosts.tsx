@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@tanstack/react-router";
 import { SectionHeading } from "../shared/SectionHeading";
 import { useBlogPosts } from "../../hooks/useBlogPosts";
 import { SpecimenCard } from "../shared/SpecimenCard";
@@ -27,7 +28,7 @@ export const RecentPosts: React.FC = () => {
                 <span className="mono-data text-[10px] text-primary-soft">
                   {post.published_at ? new Date(post.published_at).toLocaleDateString() : 'Draft'}
                 </span>
-                <button className="text-[10px] mono-data text-amber hover:underline">READ ENTRY</button>
+                <Link to="/" className="text-[10px] mono-data text-amber hover:underline">READ ENTRY</Link>
               </div>
             </SpecimenCard>
           ))}
