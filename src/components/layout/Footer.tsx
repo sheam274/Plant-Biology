@@ -15,7 +15,10 @@ export const Footer: React.FC = () => {
               Cell Genetics & Plant Biotechnology Laboratory
             </h3>
             <p className="text-sm text-ink/70 leading-relaxed mb-8">
-              A premier research facility dedicated to genetic transformation, cell culture, and computational biology at Jahangirnagar University.
+              '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
+                                        
+                                            
+                                            now i want to decorate the website with card and glass effect and hover and other advanced css.give me the prompt.also sync with whole project and make it bug free or any mismatch
             </p>
             <div className="flex gap-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
                <div className="w-10 h-12 border border-line flex items-center justify-center text-[8px] mono-data text-center p-1">JU</div>
