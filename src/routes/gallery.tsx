@@ -5,6 +5,7 @@ import { Breadcrumb } from '../components/shared/Breadcrumb'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useGallery } from '../hooks/useGallery'
 import { SectionHeading } from '../components/shared/SectionHeading'
+import { SpecimenCard } from '../components/shared/SpecimenCard'
 
 export const Route = createFileRoute('/gallery')({
   component: GalleryPage,
@@ -57,19 +58,27 @@ function GalleryPage() {
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                       {items.filter(item => item.album === album).map(item => (
-                        <div key={item.id} className="group relative aspect-square bg-surface border border-line overflow-hidden">
-                          <img 
-                            src={item.image_url} 
-                            alt={item.title}
-                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-110"
-                          />
-                          <div className="absolute inset-x-0 bottom-0 p-4 bg-bg/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300 border-t border-line">
-                            <p className="text-[10px] mono-data text-amber mb-1">{item.title}</p>
-                            {item.taken_at && (
-                              <p className="text-[8px] mono-data text-ink/50">DATE: {new Date(item.taken_at).toLocaleDateString()}</p>
-                            )}
+                        <SpecimenCard
+                          key={item.id}
+                          catalogId={`IMG-${item.id.slice(0, 4).toUpperCase()}`}
+                          title={item.title}
+                          variant="glass"
+                          className="p-0 border-none group/item"
+                        >
+                          <div className="relative aspect-square overflow-hidden">
+                            <img 
+                              src={item.image_url} 
+                              alt={item.title}
+                              loading="lazy"
+                              className="w-full h-full object-cover grayscale group-hover/item:grayscale-0 transition-all duration-700 group-hover/item:scale-110"
+                            />
+                            <div className="absolute inset-x-0 bottom-0 p-4 bg-bg/90 translate-y-full group-hover/item:translate-y-0 transition-transform duration-300 border-t border-line">
+                              {item.taken_at && (
+                                <p className="text-[8px] mono-data text-ink/50">DATE: {new Date(item.taken_at).toLocaleDateString()}</p>
+                              )}
+                            </div>
                           </div>
-                        </div>
+                        </SpecimenCard>
                       ))}
                     </div>
                   </div>

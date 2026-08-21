@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useRouterState, useLocation } from "@tanstack/react-router";
 import { Menu, X, Sun, Leaf, Search, ChevronDown, Dna } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../../contexts/ThemeContext";
@@ -17,6 +17,49 @@ const NAV_ITEMS = [
   { label: "Outreach", href: "/outreach", hasMega: true },
 ];
 
+const MobileNavSection: React.FC<{
+  title: string;
+  links: { to: string; label: string }[];
+  onClose: () => void;
+}> = ({ title, links, onClose }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-line pb-4">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center text-xl font-display text-ink py-2"
+      >
+        {title}
+        <motion.span animate={{ rotate: isOpen ? 180 : 0 }}>
+          <ChevronDown size={20} />
+        </motion.span>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden flex flex-col gap-3 mt-4 ml-4 border-l border-line pl-4"
+          >
+            {links.map((link) => (
+              <Link
+                key={link.label}
+                to={link.to as any}
+                className="text-sm mono-data text-primary-soft hover:text-amber transition-colors"
+                onClick={onClose}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -24,6 +67,12 @@ export const Header: React.FC = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+
+  // Reset scroll progress on route change
+  useEffect(() => {
+    setScrollProgress(0);
+  }, [location.pathname]);
 
   // Handle Cmd+K
   useEffect(() => {
@@ -288,16 +337,35 @@ export const Header: React.FC = () => {
               </button>
             </div>
             <div className="flex-grow overflow-y-auto p-4 space-y-4">
-              {NAV_ITEMS.map(item => (
-                <Link 
-                  key={item.href} 
-                  to={item.href as any} 
-                  className="block text-2xl font-display text-primary"
-                  onClick={() => setIsMobileOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              <MobileNavSection 
+                title="Laboratory Vision" 
+                links={[
+                  { to: "/about", label: "Our Chronicle" },
+                  { to: "/about", label: "Core Ethics" },
+                  { to: "/people", label: "Current Roster" },
+                  { to: "/people", label: "Alumni Ledger" }
+                ]}
+                onClose={() => setIsMobileOpen(false)}
+              />
+              <MobileNavSection 
+                title="Genomic Catalog" 
+                links={[
+                  { to: "/research", label: "Transformation Facility" },
+                  { to: "/research", label: "Ongoing Programs" },
+                  { to: "/publications", label: "Scientific Ledger" },
+                  { to: "/gallery", label: "Visual Archive" }
+                ]}
+                onClose={() => setIsMobileOpen(false)}
+              />
+              <MobileNavSection 
+                title="Public Outreach" 
+                links={[
+                  { to: "/outreach", label: "Training Seminars" },
+                  { to: "/outreach", label: "Foldscope Program" },
+                  { to: "/blog", label: "Laboratory Log" }
+                ]}
+                onClose={() => setIsMobileOpen(false)}
+              />
             </div>
             <Link 
               to="/about" 
@@ -314,3 +382,5 @@ export const Header: React.FC = () => {
     </header>
   );
 };
+
+export default Header;

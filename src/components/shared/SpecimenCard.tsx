@@ -26,7 +26,7 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({
   const variants = {
     standard: "bg-surface border-line",
     glass: "bg-[color-mix(in_srgb,var(--surface)_70%,transparent)] backdrop-blur-[16px] saturate-[140%] border-[color-mix(in_srgb,var(--line)_60%,transparent)] shadow-[inset_0_1px_0_color-mix(in_srgb,var(--ink)_8%,transparent)]",
-    elevated: "bg-surface border-line shadow-[0_8px_24px_-12px_rgba(22,36,28,0.15)]",
+    elevated: "bg-surface border-line shadow-[0_8px_24px_-12px_color-mix(in_srgb,var(--ink)_15%,transparent)]",
   };
 
   return (
@@ -38,13 +38,13 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({
         "hover:border-amber",
         variants[variant],
         "container-type-inline-size",
-        className
+        className ?? ""
       )}
     >
       <div className="flex justify-between items-start mb-6">
         <motion.div 
           variants={{
-            hover: { y: -2, boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }
+            hover: { y: -2, boxShadow: "0 2px 4px color-mix(in_srgb,var(--ink) 10%,transparent)" }
           }}
           className="mono-data text-[10px] text-primary-soft border border-line px-2 py-0.5 group-hover:bg-amber group-hover:text-bg transition-all"
         >

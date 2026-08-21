@@ -92,7 +92,7 @@ export const Footer: React.FC = () => {
 
         <div className="mt-20 pt-8 border-t border-line flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-[10px] mono-data text-primary-soft">
-            © 2026 CGPBL · JU BGE DEPARTMENT · DHAKA, BANGLADESH
+            © {new Date().getFullYear()} CGPBL · JU BGE DEPARTMENT · DHAKA, BANGLADESH
           </div>
           <div className="flex gap-8 text-[10px] mono-data text-primary-soft">
             <span className="flex items-center gap-2">

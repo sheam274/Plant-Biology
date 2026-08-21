@@ -5,14 +5,15 @@ import { ExternalLink, FileText } from "lucide-react";
 
 interface PublicationCardProps {
   publication: Publication;
+  className?: string;
 }
 
-export const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
+export const PublicationCard: React.FC<PublicationCardProps> = ({ publication, className }) => {
   return (
     <SpecimenCard 
       catalogId={publication.catalog_code}
       title={publication.title}
-      className="h-full"
+      {...(className ? { className } : {})}
     >
       <div className="flex flex-col gap-6">
         <div className="space-y-4">
