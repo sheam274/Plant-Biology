@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 
@@ -12,20 +11,17 @@ export const Newsletter: React.FC = () => {
     setLoading(true);
 
     try {
-      const { error } = await supabase
-        .from("newsletter_subscribers")
-        .insert([{ email }]);
+      const response = await fetch('/api/public/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
 
-      if (error) {
-        if (error.code === '23505') {
-          toast.success("Entry already recorded. Thank you.");
-        } else {
-          throw error;
-        }
-      } else {
-        toast.success("Ledger entry recorded.");
-        setEmail("");
-      }
+      if (!response.ok) throw new Error('Failed to subscribe');
+
+      const data = await response.json();
+      toast.success(data.message || "Ledger entry recorded.");
+      setEmail("");
     } catch (err) {
       toast.error("Process interrupted. Please retry.");
     } finally {
