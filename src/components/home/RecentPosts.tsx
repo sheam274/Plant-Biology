@@ -17,7 +17,7 @@ export const RecentPosts: React.FC = () => {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {posts.map((post) => (
+          {posts.slice(0, 3).map((post) => (
             <SpecimenCard
               key={post.id}
               catalogId={post.slug}
