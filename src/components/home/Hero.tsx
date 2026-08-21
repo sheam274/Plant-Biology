@@ -29,7 +29,7 @@ export const Hero: React.FC = () => {
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/research"
-                className="px-8 py-4 bg-primary text-white dark:text-bg font-medium btn-magnetic cta-border transition-colors flex items-center gap-2 group mono-data uppercase tracking-wider text-sm"
+                className="px-8 py-4 bg-primary text-bg font-medium btn-magnetic cta-border transition-colors flex items-center gap-2 group mono-data uppercase tracking-wider text-sm"
               >
                 Explore Research Areas
                 <motion.span
