@@ -16,13 +16,13 @@ export const Breadcrumb: React.FC = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": window.location.origin
+        "item": typeof window !== "undefined" ? window.location.origin : ""
       },
       ...pathnames.map((name, index) => ({
         "@type": "ListItem",
         "position": index + 2,
         "name": name.replace(/-/g, " "),
-        "item": `${window.location.origin}/${pathnames.slice(0, index + 1).join("/")}`
+        "item": typeof window !== "undefined" ? `${window.location.origin}/${pathnames.slice(0, index + 1).join("/")}` : ""
       }))
     ]
   };
