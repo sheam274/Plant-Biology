@@ -4,6 +4,7 @@ import { Menu, X, Sun, Leaf, Search, ChevronDown, Dna } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../../contexts/ThemeContext";
 import { CommandPalette } from "../shared/CommandPalette";
+import { SpecimenCard } from "../shared/SpecimenCard";
 import { cn } from "../../lib/utils";
 
 const NAV_ITEMS = [
