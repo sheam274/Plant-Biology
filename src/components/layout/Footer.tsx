@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
           {/* Contact */}
           <div>
             <div className="mono-data text-[10px] text-amber mb-6">
-              CGPBL · CATALOG · 2024
+              CGPBL · CATALOG · 2026
             </div>
             <h3 className="font-display text-2xl text-primary mb-6">CGPBL</h3>
             <div className="space-y-4 text-sm text-ink leading-relaxed">
@@ -69,7 +69,7 @@ export const Footer: React.FC = () => {
               </div>
             </div>
             <div className="mt-12 pt-8 border-t border-line/40 text-[10px] mono-data text-primary-soft">
-              © 2024 CGPBL · BUILT FOR JU
+              © 2026 CGPBL · BUILT FOR JU
             </div>
           </div>
         </div>

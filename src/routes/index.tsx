@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen selection:bg-amber/30">
       <Header />
       <main className="flex-grow pt-[76px]">
         <Breadcrumb />
