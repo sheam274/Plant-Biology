@@ -22,7 +22,7 @@ export const Hero: React.FC = () => {
               <span className="text-highlight">Sustainable</span> Agriculture
             </h1>
             <p className="text-lg md:text-xl text-primary-soft max-w-xl leading-relaxed mb-10">
-              '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            Verify the “Explore research areas” hero button text color renders correctly in both light and dark themes across all screen sizes. 
+              Welcome to the Cell Genetics & Plant Biotechnology Laboratory (CGPBL). 
               Our mission is to ensure food security, sustainable agriculture, and 
               environmental health through advanced biotechnological innovation.
             </p>
