@@ -17,6 +17,49 @@ const NAV_ITEMS = [
   { label: "Outreach", href: "/outreach", hasMega: true },
 ];
 
+const MobileNavSection: React.FC<{
+  title: string;
+  links: { to: string; label: string }[];
+  onClose: () => void;
+}> = ({ title, links, onClose }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-line pb-4">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center text-xl font-display text-ink py-2"
+      >
+        {title}
+        <motion.span animate={{ rotate: isOpen ? 180 : 0 }}>
+          <ChevronDown size={20} />
+        </motion.span>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden flex flex-col gap-3 mt-4 ml-4 border-l border-line pl-4"
+          >
+            {links.map((link) => (
+              <Link
+                key={link.label}
+                to={link.to as any}
+                className="text-sm mono-data text-primary-soft hover:text-amber transition-colors"
+                onClick={onClose}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -339,3 +382,5 @@ export const Header: React.FC = () => {
     </header>
   );
 };
+
+export default Header;
