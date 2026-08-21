@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Leaf } from "lucide-react";
+import { useTheme } from "../../hooks/useTheme";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../../lib/utils";
 
 const NAV_ITEMS = [
@@ -14,6 +16,7 @@ const NAV_ITEMS = [
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-bg border-b border-line">

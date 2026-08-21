@@ -48,26 +48,31 @@
 }
 
 :root {
-  /* Porcelain / agar-plate cream */
-  --bg: oklch(0.98 0.01 85); /* #FAF8F1 approx */
-  /* Deeper card surface */
-  --surface: oklch(0.95 0.02 85); /* #F1EDE0 approx */
-  /* Near-black deep foliage */
-  --ink: oklch(0.2 0.02 160); /* #16241C approx */
-  /* Deep chlorophyll green */
-  --primary: oklch(0.28 0.04 160); /* #1F3D2B approx */
-  /* Lighter green for hover */
-  --primary-soft: oklch(0.45 0.08 155); /* #3F6B4A approx */
-  /* Culture-medium amber */
-  --amber: oklch(0.65 0.15 75); /* #C98A2C approx */
-  /* Petri-dish teal */
-  --teal: oklch(0.48 0.08 185); /* #2E6E62 approx */
-  /* Specimen-label beige / border */
-  --line: oklch(0.88 0.03 85); /* #D8D2C0 approx */
-  /* Fresh-growth lime */
-  --highlight: oklch(0.8 0.2 130); /* #8FBF3F approx */
+  /* Day Mode Tokens */
+  --bg: #FAF8F1;
+  --surface: #F1EDE0;
+  --ink: #16241C;
+  --primary: #1F3D2B;
+  --primary-soft: #3F6B4A;
+  --amber: #C98A2C;
+  --teal: #2E6E62;
+  --line: #D8D2C0;
+  --highlight: #8FBF3F;
 
   --radius: 0px;
+}
+
+.dark {
+  /* Night Mode Tokens */
+  --bg: #10160F;
+  --surface: #171E15;
+  --ink: #EDE9DC;
+  --primary: #7FBF8A;
+  --primary-soft: #4E9C8C; /* Use teal-like for soft in dark mode or adjust */
+  --amber: #E3A94A;
+  --teal: #4E9C8C;
+  --line: #2B3327;
+  --highlight: #A6E05A;
 }
 
 @layer base {
