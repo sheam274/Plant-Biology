@@ -54,6 +54,28 @@ Responsive to 360px. Visible keyboard focus ring (amber) on every interactive el
 - `src/hooks/` gets useResearchAreas and useBlogPosts returning those types from the placeholder content file. When you send the schema I enable the backend (Postgres + auth + storage), add `src/lib/supabase.ts`, and change only the hook bodies — no component touches.
 - Framer Motion added as the only new runtime dependency in this step.
 
-## Next steps after this
+## Supabase Backend & Database Schema
 
-Send the schema and content inventory: I provision the database and storage, migrate content to rows, wire the hooks, then build Research/People/Publications/Galleries/Outreach/Blog on the same card and sub-nav patterns, plus the admin area behind auth.
+1. Enable Lovable Cloud (Supabase integration).
+2. Create migrations for all domain tables:
+   - `lab_members`: name, role, bio, image_url, catalog_id, status (active/alumni/staff).
+   - `research_programs`: title, description, catalog_id, category.
+   - `publications`: title, authors (text array), journal, year, catalog_id, url.
+   - `blog_posts`: title, excerpt, content, date, catalog_id, image_url.
+   - `outreach_events`: title, description, date, location, catalog_id.
+   - `gallery_items`: title, image_url, caption, catalog_id, category.
+3. Enable RLS on all tables:
+   - Public read access for everyone.
+   - Authenticated write/update/delete access for admin users.
+4. Set up storage buckets for media:
+   - `lab-members`: profile photos.
+   - `blog-images`: post covers.
+   - `gallery`: research and event photos.
+5. Create a `user_roles` system to manage admin access.
+
+## Next Steps
+
+- Apply the migrations to the database.
+- Update `src/hooks/` to fetch from Supabase instead of mock data.
+- Build the remaining pages (Research, People, etc.) using the live data.
+- Implement the Admin area for content management.
