@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@tanstack/react-router";
 import { SpecimenCard } from "../shared/SpecimenCard";
 import { SectionHeading } from "../shared/SectionHeading";
 import { useResearchAreas } from "../../hooks/useResearchAreas";

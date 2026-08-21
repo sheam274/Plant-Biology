@@ -50,7 +50,7 @@ export const Newsletter: React.FC = () => {
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.value)}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="COLLEAGUE@INSTITUTION.EDU"
               required
               className="flex-grow bg-surface border border-line px-6 py-4 mono-data text-sm focus:outline-none focus:border-amber transition-colors placeholder:text-ink/30"
