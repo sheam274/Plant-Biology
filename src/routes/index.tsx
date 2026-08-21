@@ -45,7 +45,7 @@ Before anything else, find the exact component file for the Home page hero's pri
 
 - Explicitly set its text color as a plain, non-inherited, non-gradient value (e.g. `color: var(--ink)` or `color: var(--primary)`, whichever has real contrast against this specific button's actual background) with no other rule in the cascade able to override it to transparent.
 
-- As a guaranteed fallback if you're still not fully certain the root cause is fixed, apply an explicit inline override directly on the text element (`style={"{"}{ color: 'var(--ink)', opacity: 1, visibility: 'visible' }{"}"}`) so the label is provably visible regardless of any competing CSS rule elsewhere, then clean up the real root cause afterward once confirmed visible.
+- As a guaranteed fallback if you're still not fully certain the root cause is fixed, apply an explicit inline override directly on the text element (style={"{"}{"{"} color: 'var(--ink)', opacity: 1, visibility: 'visible' {"}"}{"}"}) so the label is provably visible regardless of any competing CSS rule elsewhere, then clean up the real root cause afterward once confirmed visible.
 
 - Take a screenshot or describe exactly what the button renders after the fix, in both Day and Night mode, before moving to anything else in this prompt.
 
