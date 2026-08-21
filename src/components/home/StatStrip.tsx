@@ -52,7 +52,10 @@ export const StatStrip: React.FC = () => {
                 {stat.value}
               </div>
               <p className="text-xs text-ink/70 leading-relaxed">
-                {stat.desc}
+                '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
+                                        
+                                            
+                                            now i want to decorate the website with card and glass effect and hover and other advanced css.give me the prompt.also sync with whole project and make it bug free or any mismatch
               </p>
             </motion.div>
           ))}
