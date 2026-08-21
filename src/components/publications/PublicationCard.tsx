@@ -13,7 +13,7 @@ export const PublicationCard: React.FC<PublicationCardProps> = ({ publication, c
     <SpecimenCard 
       catalogId={publication.catalog_code}
       title={publication.title}
-      className={className ?? undefined}
+      {...(className ? { className } : {})}
     >
       <div className="flex flex-col gap-6">
         <div className="space-y-4">
