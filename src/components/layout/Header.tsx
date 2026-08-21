@@ -128,30 +128,117 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mega Menus Placeholder - Will implement detailed panels next */}
+      {/* Mega Menus Panel */}
       <AnimatePresence>
         {activeMega && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-full left-0 w-full bg-surface border-b border-line shadow-xl z-40"
+            className="absolute top-full left-0 w-full bg-surface border-b border-line shadow-2xl z-40 overflow-hidden"
             onMouseEnter={() => setActiveMega(activeMega)}
             onMouseLeave={() => setActiveMega(null)}
           >
-            <div className="container mx-auto px-4 py-8">
-              <div className="grid grid-cols-4 gap-8">
-                {/* Column structure for mega menu */}
-                <div className="col-span-1">
-                  <span className="mono-data text-[10px] text-primary-soft block mb-4 border-b border-line pb-1 uppercase">Sections</span>
-                  <ul className="space-y-2">
-                    <li><Link to="/research" className="text-sm hover:text-amber transition-colors">Computational Track</Link></li>
-                    <li><Link to="/research" className="text-sm hover:text-amber transition-colors">Genetic Engineering</Link></li>
-                    <li><Link to="/research" className="text-sm hover:text-amber transition-colors">Systems Biology</Link></li>
-                  </ul>
+            <div className="container mx-auto px-4 py-12">
+              {activeMega === "Research" && (
+                <div className="grid grid-cols-4 gap-12">
+                  <div className="space-y-6">
+                    <span className="mono-data text-[10px] text-primary-soft block border-b border-line pb-2">Facilities</span>
+                    <ul className="space-y-3">
+                      <li><Link to="/research" className="text-sm hover:text-amber transition-colors">Tissue Culture Lab</Link></li>
+                      <li><Link to="/research" className="text-sm hover:text-amber transition-colors">Molecular Biology</Link></li>
+                      <li><Link to="/research" className="text-sm hover:text-amber transition-colors">Greenhouse Complex</Link></li>
+                    </ul>
+                  </div>
+                  <div className="space-y-6">
+                    <span className="mono-data text-[10px] text-primary-soft block border-b border-line pb-2">Computational Track</span>
+                    <ul className="space-y-3">
+                      <li><Link to="/research" className="text-sm hover:text-amber transition-colors">Bioinformatics</Link></li>
+                      <li><Link to="/research" className="text-sm hover:text-amber transition-colors">Systems Biology</Link></li>
+                      <li><Link to="/research" className="text-sm hover:text-amber transition-colors">AI & Modeling</Link></li>
+                    </ul>
+                  </div>
+                  <div className="space-y-6">
+                    <span className="mono-data text-[10px] text-primary-soft block border-b border-line pb-2">Ongoing Research</span>
+                    <ul className="space-y-3">
+                      <li><Link to="/research" className="text-sm hover:text-amber transition-colors">Genome Editing</Link></li>
+                      <li><Link to="/research" className="text-sm hover:text-amber transition-colors">Stress Physiology</Link></li>
+                      <li><Link to="/research" className="text-sm hover:text-amber transition-colors">Crop Improvement</Link></li>
+                    </ul>
+                  </div>
+                  <div className="col-span-1 border-l border-line pl-12">
+                    <span className="mono-data text-[10px] text-primary-soft block mb-4">Featured Program</span>
+                    <div className="group relative border border-line p-4 bg-bg">
+                      <div className="aspect-video bg-surface mb-3 flex items-center justify-center">
+                        <Dna size={32} className="text-line group-hover:text-amber transition-colors" />
+                      </div>
+                      <div className="mono-data text-[8px] text-amber mb-1">CGPBL · RES-002</div>
+                      <h4 className="text-sm font-display text-primary group-hover:text-amber transition-colors">CRISPR/Cas9 Transformation</h4>
+                    </div>
+                  </div>
                 </div>
-                {/* Placeholder for others */}
-              </div>
+              )}
+              {activeMega === "About" && (
+                <div className="grid grid-cols-3 gap-12">
+                  <div className="space-y-6">
+                    <span className="mono-data text-[10px] text-primary-soft block border-b border-line pb-2">Lab Members</span>
+                    <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
+                      <li><Link to="/people" className="text-sm hover:text-amber transition-colors">Principal Investigators</Link></li>
+                      <li><Link to="/people" className="text-sm hover:text-amber transition-colors">Research Staff</Link></li>
+                      <li><Link to="/people" className="text-sm hover:text-amber transition-colors">PhD Scholars</Link></li>
+                      <li><Link to="/people" className="text-sm hover:text-amber transition-colors">MPhil Students</Link></li>
+                      <li><Link to="/people" className="text-sm hover:text-amber transition-colors">Graduate Researchers</Link></li>
+                    </ul>
+                  </div>
+                  <div className="space-y-6">
+                    <span className="mono-data text-[10px] text-primary-soft block border-b border-line pb-2">Lab Alumni</span>
+                    <ul className="space-y-3">
+                      <li><Link to="/people" className="text-sm hover:text-amber transition-colors">Alumni Network</Link></li>
+                      <li><Link to="/people" className="text-sm hover:text-amber transition-colors">Past Projects</Link></li>
+                    </ul>
+                  </div>
+                  <div className="space-y-6">
+                    <span className="mono-data text-[10px] text-primary-soft block border-b border-line pb-2">The Lab</span>
+                    <ul className="space-y-3">
+                      <li><Link to="/about" className="text-sm hover:text-amber transition-colors">Supporting Staff</Link></li>
+                      <li><Link to="/about" className="text-sm hover:text-amber transition-colors">Lab Portfolio</Link></li>
+                      <li><Link to="/about" className="text-sm hover:text-amber transition-colors">Contact Details</Link></li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+              {activeMega === "Outreach" && (
+                <div className="grid grid-cols-3 gap-12">
+                  <div className="space-y-6">
+                    <span className="mono-data text-[10px] text-primary-soft block border-b border-line pb-2">Programs</span>
+                    <ul className="space-y-3">
+                      <li><Link to="/outreach" className="text-sm hover:text-amber transition-colors">Training Workshops</Link></li>
+                      <li><Link to="/outreach" className="text-sm hover:text-amber transition-colors">Research Internships</Link></li>
+                      <li><Link to="/outreach" className="text-sm hover:text-amber transition-colors">Public Seminars</Link></li>
+                    </ul>
+                  </div>
+                  <div className="space-y-6">
+                    <span className="mono-data text-[10px] text-primary-soft block border-b border-line pb-2">Impact</span>
+                    <ul className="space-y-3">
+                      <li><Link to="/outreach" className="text-sm hover:text-amber transition-colors">Biosafety Training</Link></li>
+                      <li><Link to="/outreach" className="text-sm hover:text-amber transition-colors">Frugal Science Initiative</Link></li>
+                    </ul>
+                  </div>
+                  <div className="space-y-6 border-l border-line pl-12">
+                    <span className="mono-data text-[10px] text-primary-soft block mb-4">Upcoming Events</span>
+                    <div className="space-y-4">
+                      <div className="group cursor-pointer">
+                        <div className="mono-data text-[8px] text-amber">12 OCT 2026</div>
+                        <h4 className="text-sm font-display group-hover:text-amber transition-colors">CRISPR Hands-on Workshop</h4>
+                      </div>
+                      <div className="group cursor-pointer">
+                        <div className="mono-data text-[8px] text-amber">05 NOV 2026</div>
+                        <h4 className="text-sm font-display group-hover:text-amber transition-colors">Plant Biotech Symposium</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </motion.div>
         )}
