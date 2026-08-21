@@ -29,9 +29,9 @@ export const Hero: React.FC = () => {
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/research"
-                className="px-8 py-4 bg-primary text-primary-foreground font-medium btn-magnetic transition-colors flex items-center gap-2 group mono-data uppercase tracking-wider text-sm border border-primary"
+                className="px-8 py-4 bg-primary text-bg font-medium btn-magnetic transition-colors flex items-center gap-2 group mono-data uppercase tracking-wider text-sm border border-primary"
               >
-                <span className="relative z-10" style={{ color: 'var(--bg)', opacity: 1, visibility: 'visible' }}>Explore Our Research</span>
+                <span className="relative z-10">Explore Our Research</span>
                 <motion.span
                   animate={{ x: [0, 5, 0] }}
                   transition={{ repeat: Infinity, duration: 1.5 }}
