@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X, Sun, Leaf, Search, ChevronDown, DNA } from "lucide-react";
+import { Menu, X, Sun, Leaf, Search, ChevronDown, Dna } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../../contexts/ThemeContext";
 import { cn } from "../../lib/utils";
@@ -48,7 +48,7 @@ export const Header: React.FC = () => {
         {/* Left: Logo */}
         <Link to="/" className="flex items-center gap-2 group">
           <div className="text-amber group-hover:rotate-12 transition-transform duration-300">
-            <DNA size={28} strokeWidth={1.5} />
+            <Dna size={28} strokeWidth={1.5} />
           </div>
           <div className="flex flex-col">
             <span className="font-display text-xl md:text-2xl text-primary leading-none tracking-tight">
@@ -112,7 +112,7 @@ export const Header: React.FC = () => {
           </button>
 
           <Link
-            to="/contact"
+            to="/"
             className="hidden sm:block px-5 py-2 bg-amber text-bg text-sm font-medium hover:brightness-110 transition-all uppercase tracking-wider mono-data"
           >
             Contact Us
@@ -194,7 +194,7 @@ export const Header: React.FC = () => {
               ))}
             </div>
             <Link 
-              to="/contact" 
+              to="/" 
               className="p-6 bg-amber text-bg text-center font-bold uppercase tracking-widest"
               onClick={() => setIsMobileOpen(false)}
             >
