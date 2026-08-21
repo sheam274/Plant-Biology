@@ -16,193 +16,302 @@ export type Database = {
     Tables: {
       blog_posts: {
         Row: {
-          catalog_id: string
-          content: string
-          created_at: string
-          date: string
+          author_id: string | null
+          body: string
+          category: string
+          cover_image_url: string | null
           excerpt: string | null
           id: string
-          image_url: string | null
-          published: boolean
+          published_at: string | null
+          slug: string
           title: string
         }
         Insert: {
-          catalog_id: string
-          content: string
-          created_at?: string
-          date?: string
+          author_id?: string | null
+          body: string
+          category: string
+          cover_image_url?: string | null
           excerpt?: string | null
           id?: string
-          image_url?: string | null
-          published?: boolean
+          published_at?: string | null
+          slug: string
           title: string
         }
         Update: {
-          catalog_id?: string
-          content?: string
-          created_at?: string
-          date?: string
+          author_id?: string | null
+          body?: string
+          category?: string
+          cover_image_url?: string | null
           excerpt?: string | null
           id?: string
-          image_url?: string | null
-          published?: boolean
+          published_at?: string | null
+          slug?: string
           title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "blog_posts_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "lab_members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      collaborations: {
+        Row: {
+          description: string | null
+          id: string
+          logo_url: string | null
+          partner_name: string
+          partner_type: string
+          website_url: string | null
+        }
+        Insert: {
+          description?: string | null
+          id?: string
+          logo_url?: string | null
+          partner_name: string
+          partner_type: string
+          website_url?: string | null
+        }
+        Update: {
+          description?: string | null
+          id?: string
+          logo_url?: string | null
+          partner_name?: string
+          partner_type?: string
+          website_url?: string | null
+        }
+        Relationships: []
+      }
+      contact_messages: {
+        Row: {
+          email: string
+          id: string
+          message: string
+          name: string
+          submitted_at: string
+        }
+        Insert: {
+          email: string
+          id?: string
+          message: string
+          name: string
+          submitted_at?: string
+        }
+        Update: {
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          submitted_at?: string
         }
         Relationships: []
       }
       gallery_items: {
         Row: {
-          caption: string | null
-          catalog_id: string
-          category: string | null
-          created_at: string
+          album: string
+          display_order: number | null
           id: string
           image_url: string
+          taken_at: string | null
           title: string
         }
         Insert: {
-          caption?: string | null
-          catalog_id: string
-          category?: string | null
-          created_at?: string
+          album: string
+          display_order?: number | null
           id?: string
           image_url: string
+          taken_at?: string | null
           title: string
         }
         Update: {
-          caption?: string | null
-          catalog_id?: string
-          category?: string | null
-          created_at?: string
+          album?: string
+          display_order?: number | null
           id?: string
           image_url?: string
+          taken_at?: string | null
           title?: string
         }
         Relationships: []
       }
       lab_members: {
         Row: {
+          alumni_year: number | null
           bio: string | null
-          catalog_id: string
+          category: string
           created_at: string
           display_order: number | null
+          email: string | null
+          full_name: string
           id: string
-          image_url: string | null
-          name: string
+          photo_url: string | null
           role: string
-          status: Database["public"]["Enums"]["member_status"]
         }
         Insert: {
+          alumni_year?: number | null
           bio?: string | null
-          catalog_id: string
+          category: string
           created_at?: string
           display_order?: number | null
+          email?: string | null
+          full_name: string
           id?: string
-          image_url?: string | null
-          name: string
+          photo_url?: string | null
           role: string
-          status?: Database["public"]["Enums"]["member_status"]
         }
         Update: {
+          alumni_year?: number | null
           bio?: string | null
-          catalog_id?: string
+          category?: string
           created_at?: string
           display_order?: number | null
+          email?: string | null
+          full_name?: string
           id?: string
-          image_url?: string | null
-          name?: string
+          photo_url?: string | null
           role?: string
-          status?: Database["public"]["Enums"]["member_status"]
         }
         Relationships: []
       }
-      outreach_events: {
+      newsletter_subscribers: {
         Row: {
-          catalog_id: string
-          created_at: string
-          date: string
-          description: string
+          email: string
           id: string
-          location: string | null
+          subscribed_at: string
+        }
+        Insert: {
+          email: string
+          id?: string
+          subscribed_at?: string
+        }
+        Update: {
+          email?: string
+          id?: string
+          subscribed_at?: string
+        }
+        Relationships: []
+      }
+      outreach_programs: {
+        Row: {
+          cover_image_url: string | null
+          description: string
+          event_date: string | null
+          id: string
+          program_type: string
           title: string
         }
         Insert: {
-          catalog_id: string
-          created_at?: string
-          date: string
+          cover_image_url?: string | null
           description: string
+          event_date?: string | null
           id?: string
-          location?: string | null
+          program_type: string
           title: string
         }
         Update: {
-          catalog_id?: string
-          created_at?: string
-          date?: string
+          cover_image_url?: string | null
           description?: string
+          event_date?: string | null
           id?: string
-          location?: string | null
+          program_type?: string
           title?: string
         }
         Relationships: []
       }
       publications: {
         Row: {
-          authors: string[]
-          catalog_id: string
-          created_at: string
+          abstract: string | null
+          authors: string
+          catalog_code: string
+          doi_or_link: string | null
           id: string
           journal: string
           title: string
-          url: string | null
           year: number
         }
         Insert: {
-          authors: string[]
-          catalog_id: string
-          created_at?: string
+          abstract?: string | null
+          authors: string
+          catalog_code: string
+          doi_or_link?: string | null
           id?: string
           journal: string
           title: string
-          url?: string | null
           year: number
         }
         Update: {
-          authors?: string[]
-          catalog_id?: string
-          created_at?: string
+          abstract?: string | null
+          authors?: string
+          catalog_code?: string
+          doi_or_link?: string | null
           id?: string
           journal?: string
           title?: string
-          url?: string | null
           year?: number
         }
         Relationships: []
       }
       research_programs: {
         Row: {
-          catalog_id: string
-          category: string
-          created_at: string
-          description: string
+          body: string
+          catalog_code: string
+          cover_image_url: string | null
+          display_order: number | null
           id: string
+          parent_program_id: string | null
+          summary: string
           title: string
+          track: string
         }
         Insert: {
-          catalog_id: string
-          category: string
-          created_at?: string
-          description: string
+          body: string
+          catalog_code: string
+          cover_image_url?: string | null
+          display_order?: number | null
           id?: string
+          parent_program_id?: string | null
+          summary: string
           title: string
+          track: string
         }
         Update: {
-          catalog_id?: string
-          category?: string
-          created_at?: string
-          description?: string
+          body?: string
+          catalog_code?: string
+          cover_image_url?: string | null
+          display_order?: number | null
           id?: string
+          parent_program_id?: string | null
+          summary?: string
           title?: string
+          track?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "research_programs_parent_program_id_fkey"
+            columns: ["parent_program_id"]
+            isOneToOne: false
+            referencedRelation: "research_programs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
         }
         Relationships: []
       }
@@ -211,10 +320,16 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      member_status: "active" | "alumni" | "staff"
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -342,7 +457,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      member_status: ["active", "alumni", "staff"],
+      app_role: ["admin", "moderator", "user"],
     },
   },
 } as const

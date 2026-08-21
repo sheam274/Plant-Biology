@@ -10,22 +10,44 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as OutreachRouteImport } from './routes/outreach'
 import { Route as PeopleRouteImport } from './routes/people'
 import { Route as PublicationsRouteImport } from './routes/publications'
 import { Route as ResearchRouteImport } from './routes/research'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as AuthenticatedAdminBlog_postsRouteImport } from './routes/_authenticated/admin/blog_posts'
+import { Route as AuthenticatedAdminCollaborationsRouteImport } from './routes/_authenticated/admin/collaborations'
+import { Route as AuthenticatedAdminContact_messagesRouteImport } from './routes/_authenticated/admin/contact_messages'
+import { Route as AuthenticatedAdminGallery_itemsRouteImport } from './routes/_authenticated/admin/gallery_items'
+import { Route as AuthenticatedAdminLab_membersRouteImport } from './routes/_authenticated/admin/lab_members'
+import { Route as AuthenticatedAdminNewsletter_subscribersRouteImport } from './routes/_authenticated/admin/newsletter_subscribers'
+import { Route as AuthenticatedAdminOutreach_programsRouteImport } from './routes/_authenticated/admin/outreach_programs'
+import { Route as AuthenticatedAdminPublicationsRouteImport } from './routes/_authenticated/admin/publications'
+import { Route as AuthenticatedAdminResearch_programsRouteImport } from './routes/_authenticated/admin/research_programs'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogRoute = BlogRouteImport.update({
@@ -58,74 +80,212 @@ const ResearchRoute = ResearchRouteImport.update({
   path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminBlog_postsRoute =
+  AuthenticatedAdminBlog_postsRouteImport.update({
+    id: '/blog_posts',
+    path: '/blog_posts',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminCollaborationsRoute =
+  AuthenticatedAdminCollaborationsRouteImport.update({
+    id: '/collaborations',
+    path: '/collaborations',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminContact_messagesRoute =
+  AuthenticatedAdminContact_messagesRouteImport.update({
+    id: '/contact_messages',
+    path: '/contact_messages',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminGallery_itemsRoute =
+  AuthenticatedAdminGallery_itemsRouteImport.update({
+    id: '/gallery_items',
+    path: '/gallery_items',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminLab_membersRoute =
+  AuthenticatedAdminLab_membersRouteImport.update({
+    id: '/lab_members',
+    path: '/lab_members',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminNewsletter_subscribersRoute =
+  AuthenticatedAdminNewsletter_subscribersRouteImport.update({
+    id: '/newsletter_subscribers',
+    path: '/newsletter_subscribers',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminOutreach_programsRoute =
+  AuthenticatedAdminOutreach_programsRouteImport.update({
+    id: '/outreach_programs',
+    path: '/outreach_programs',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminPublicationsRoute =
+  AuthenticatedAdminPublicationsRouteImport.update({
+    id: '/publications',
+    path: '/publications',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminResearch_programsRoute =
+  AuthenticatedAdminResearch_programsRouteImport.update({
+    id: '/research_programs',
+    path: '/research_programs',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
   '/gallery': typeof GalleryRoute
   '/outreach': typeof OutreachRoute
   '/people': typeof PeopleRoute
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/admin/blog_posts': typeof AuthenticatedAdminBlog_postsRoute
+  '/admin/collaborations': typeof AuthenticatedAdminCollaborationsRoute
+  '/admin/contact_messages': typeof AuthenticatedAdminContact_messagesRoute
+  '/admin/gallery_items': typeof AuthenticatedAdminGallery_itemsRoute
+  '/admin/lab_members': typeof AuthenticatedAdminLab_membersRoute
+  '/admin/newsletter_subscribers': typeof AuthenticatedAdminNewsletter_subscribersRoute
+  '/admin/outreach_programs': typeof AuthenticatedAdminOutreach_programsRoute
+  '/admin/publications': typeof AuthenticatedAdminPublicationsRoute
+  '/admin/research_programs': typeof AuthenticatedAdminResearch_programsRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
   '/gallery': typeof GalleryRoute
   '/outreach': typeof OutreachRoute
   '/people': typeof PeopleRoute
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
+  '/admin/blog_posts': typeof AuthenticatedAdminBlog_postsRoute
+  '/admin/collaborations': typeof AuthenticatedAdminCollaborationsRoute
+  '/admin/contact_messages': typeof AuthenticatedAdminContact_messagesRoute
+  '/admin/gallery_items': typeof AuthenticatedAdminGallery_itemsRoute
+  '/admin/lab_members': typeof AuthenticatedAdminLab_membersRoute
+  '/admin/newsletter_subscribers': typeof AuthenticatedAdminNewsletter_subscribersRoute
+  '/admin/outreach_programs': typeof AuthenticatedAdminOutreach_programsRoute
+  '/admin/publications': typeof AuthenticatedAdminPublicationsRoute
+  '/admin/research_programs': typeof AuthenticatedAdminResearch_programsRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
   '/gallery': typeof GalleryRoute
   '/outreach': typeof OutreachRoute
   '/people': typeof PeopleRoute
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/_authenticated/admin/blog_posts': typeof AuthenticatedAdminBlog_postsRoute
+  '/_authenticated/admin/collaborations': typeof AuthenticatedAdminCollaborationsRoute
+  '/_authenticated/admin/contact_messages': typeof AuthenticatedAdminContact_messagesRoute
+  '/_authenticated/admin/gallery_items': typeof AuthenticatedAdminGallery_itemsRoute
+  '/_authenticated/admin/lab_members': typeof AuthenticatedAdminLab_membersRoute
+  '/_authenticated/admin/newsletter_subscribers': typeof AuthenticatedAdminNewsletter_subscribersRoute
+  '/_authenticated/admin/outreach_programs': typeof AuthenticatedAdminOutreach_programsRoute
+  '/_authenticated/admin/publications': typeof AuthenticatedAdminPublicationsRoute
+  '/_authenticated/admin/research_programs': typeof AuthenticatedAdminResearch_programsRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/auth'
     | '/blog'
     | '/gallery'
     | '/outreach'
     | '/people'
     | '/publications'
     | '/research'
+    | '/admin'
+    | '/admin/blog_posts'
+    | '/admin/collaborations'
+    | '/admin/contact_messages'
+    | '/admin/gallery_items'
+    | '/admin/lab_members'
+    | '/admin/newsletter_subscribers'
+    | '/admin/outreach_programs'
+    | '/admin/publications'
+    | '/admin/research_programs'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/auth'
     | '/blog'
     | '/gallery'
     | '/outreach'
     | '/people'
     | '/publications'
     | '/research'
+    | '/admin/blog_posts'
+    | '/admin/collaborations'
+    | '/admin/contact_messages'
+    | '/admin/gallery_items'
+    | '/admin/lab_members'
+    | '/admin/newsletter_subscribers'
+    | '/admin/outreach_programs'
+    | '/admin/publications'
+    | '/admin/research_programs'
+    | '/admin'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
+    | '/auth'
     | '/blog'
     | '/gallery'
     | '/outreach'
     | '/people'
     | '/publications'
     | '/research'
+    | '/_authenticated/admin'
+    | '/_authenticated/admin/blog_posts'
+    | '/_authenticated/admin/collaborations'
+    | '/_authenticated/admin/contact_messages'
+    | '/_authenticated/admin/gallery_items'
+    | '/_authenticated/admin/lab_members'
+    | '/_authenticated/admin/newsletter_subscribers'
+    | '/_authenticated/admin/outreach_programs'
+    | '/_authenticated/admin/publications'
+    | '/_authenticated/admin/research_programs'
+    | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
   BlogRoute: typeof BlogRoute
   GalleryRoute: typeof GalleryRoute
   OutreachRoute: typeof OutreachRoute
@@ -143,11 +303,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog': {
@@ -192,12 +366,135 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/blog_posts': {
+      id: '/_authenticated/admin/blog_posts'
+      path: '/blog_posts'
+      fullPath: '/admin/blog_posts'
+      preLoaderRoute: typeof AuthenticatedAdminBlog_postsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/collaborations': {
+      id: '/_authenticated/admin/collaborations'
+      path: '/collaborations'
+      fullPath: '/admin/collaborations'
+      preLoaderRoute: typeof AuthenticatedAdminCollaborationsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/contact_messages': {
+      id: '/_authenticated/admin/contact_messages'
+      path: '/contact_messages'
+      fullPath: '/admin/contact_messages'
+      preLoaderRoute: typeof AuthenticatedAdminContact_messagesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/gallery_items': {
+      id: '/_authenticated/admin/gallery_items'
+      path: '/gallery_items'
+      fullPath: '/admin/gallery_items'
+      preLoaderRoute: typeof AuthenticatedAdminGallery_itemsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/lab_members': {
+      id: '/_authenticated/admin/lab_members'
+      path: '/lab_members'
+      fullPath: '/admin/lab_members'
+      preLoaderRoute: typeof AuthenticatedAdminLab_membersRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/newsletter_subscribers': {
+      id: '/_authenticated/admin/newsletter_subscribers'
+      path: '/newsletter_subscribers'
+      fullPath: '/admin/newsletter_subscribers'
+      preLoaderRoute: typeof AuthenticatedAdminNewsletter_subscribersRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/outreach_programs': {
+      id: '/_authenticated/admin/outreach_programs'
+      path: '/outreach_programs'
+      fullPath: '/admin/outreach_programs'
+      preLoaderRoute: typeof AuthenticatedAdminOutreach_programsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/publications': {
+      id: '/_authenticated/admin/publications'
+      path: '/publications'
+      fullPath: '/admin/publications'
+      preLoaderRoute: typeof AuthenticatedAdminPublicationsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/research_programs': {
+      id: '/_authenticated/admin/research_programs'
+      path: '/research_programs'
+      fullPath: '/admin/research_programs'
+      preLoaderRoute: typeof AuthenticatedAdminResearch_programsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminBlog_postsRoute: typeof AuthenticatedAdminBlog_postsRoute
+  AuthenticatedAdminCollaborationsRoute: typeof AuthenticatedAdminCollaborationsRoute
+  AuthenticatedAdminContact_messagesRoute: typeof AuthenticatedAdminContact_messagesRoute
+  AuthenticatedAdminGallery_itemsRoute: typeof AuthenticatedAdminGallery_itemsRoute
+  AuthenticatedAdminLab_membersRoute: typeof AuthenticatedAdminLab_membersRoute
+  AuthenticatedAdminNewsletter_subscribersRoute: typeof AuthenticatedAdminNewsletter_subscribersRoute
+  AuthenticatedAdminOutreach_programsRoute: typeof AuthenticatedAdminOutreach_programsRoute
+  AuthenticatedAdminPublicationsRoute: typeof AuthenticatedAdminPublicationsRoute
+  AuthenticatedAdminResearch_programsRoute: typeof AuthenticatedAdminResearch_programsRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminBlog_postsRoute: AuthenticatedAdminBlog_postsRoute,
+  AuthenticatedAdminCollaborationsRoute: AuthenticatedAdminCollaborationsRoute,
+  AuthenticatedAdminContact_messagesRoute:
+    AuthenticatedAdminContact_messagesRoute,
+  AuthenticatedAdminGallery_itemsRoute: AuthenticatedAdminGallery_itemsRoute,
+  AuthenticatedAdminLab_membersRoute: AuthenticatedAdminLab_membersRoute,
+  AuthenticatedAdminNewsletter_subscribersRoute:
+    AuthenticatedAdminNewsletter_subscribersRoute,
+  AuthenticatedAdminOutreach_programsRoute:
+    AuthenticatedAdminOutreach_programsRoute,
+  AuthenticatedAdminPublicationsRoute: AuthenticatedAdminPublicationsRoute,
+  AuthenticatedAdminResearch_programsRoute:
+    AuthenticatedAdminResearch_programsRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
   BlogRoute: BlogRoute,
   GalleryRoute: GalleryRoute,
   OutreachRoute: OutreachRoute,

@@ -1,10 +1,10 @@
 import { type ResearchProgram } from "../types";
 
 export const useResearchAreas = (): ResearchProgram[] => [
-  { id: "1", title: "Plant Cell, Tissue & Organ Culture", description: "In vitro propagation and morphogenesis studies of indigenous plant species.", catalogId: "CGPBL-RES-001" },
-  { id: "2", title: "Genetic Engineering & Genome Editing", description: "Precision modifications for crop improvement and climate resilience.", catalogId: "CGPBL-RES-002" },
-  { id: "3", title: "Cytology & Cytogenetics", description: "Analyzing chromosomal dynamics and structural variations in germplasm.", catalogId: "CGPBL-RES-003" },
-  { id: "4", title: "Systems Biology", description: "Mapping complex interaction networks underlying plant developmental pathways.", catalogId: "CGPBL-RES-004" },
-  { id: "5", title: "Bioinformatics", description: "Computational modeling of genetic data to identify actionable genomic markers.", catalogId: "CGPBL-RES-005" },
-  { id: "6", title: "Artificial Intelligence", description: "Integrating machine learning to predict plant-environment responses at scale.", catalogId: "CGPBL-RES-006" },
+  { id: "1", catalog_code: "CGPBL-RES-001", title: "Plant Cell, Tissue & Organ Culture", track: "Ongoing Research", parent_program_id: null, summary: "In vitro propagation and morphogenesis studies of indigenous plant species.", body: "", cover_image_url: null, display_order: 1 },
+  { id: "2", catalog_code: "CGPBL-RES-002", title: "Genetic Engineering & Genome Editing", track: "Ongoing Research", parent_program_id: null, summary: "Precision modifications for crop improvement and climate resilience.", body: "", cover_image_url: null, display_order: 2 },
+  { id: "3", catalog_code: "CGPBL-RES-003", title: "Cytology & Cytogenetics", track: "Ongoing Research", parent_program_id: null, summary: "Analyzing chromosomal dynamics and structural variations in germplasm.", body: "", cover_image_url: null, display_order: 3 },
+  { id: "4", catalog_code: "CGPBL-RES-004", title: "Systems Biology", track: "Ongoing Research", parent_program_id: null, summary: "Mapping complex interaction networks underlying plant developmental pathways.", body: "", cover_image_url: null, display_order: 4 },
+  { id: "5", catalog_code: "CGPBL-RES-005", title: "Bioinformatics", track: "Ongoing Research", parent_program_id: null, summary: "Computational modeling of genetic data to identify actionable genomic markers.", body: "", cover_image_url: null, display_order: 5 },
+  { id: "6", catalog_code: "CGPBL-RES-006", title: "Artificial Intelligence", track: "Ongoing Research", parent_program_id: null, summary: "Integrating machine learning to predict plant-environment responses at scale.", body: "", cover_image_url: null, display_order: 6 },
 ];

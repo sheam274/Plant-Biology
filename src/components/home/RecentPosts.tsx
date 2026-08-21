@@ -19,12 +19,14 @@ export const RecentPosts: React.FC = () => {
           {posts.map((post) => (
             <SpecimenCard
               key={post.id}
-              catalogId={post.catalogId}
+              catalogId={post.slug}
               title={post.title}
-              description={post.excerpt}
+              description={post.excerpt || ""}
             >
               <div className="mt-6 pt-4 border-t border-line/40 flex items-center justify-between">
-                <span className="mono-data text-[10px] text-primary-soft">{post.date}</span>
+                <span className="mono-data text-[10px] text-primary-soft">
+                  {post.published_at ? new Date(post.published_at).toLocaleDateString() : 'Draft'}
+                </span>
                 <button className="text-[10px] mono-data text-amber hover:underline">READ ENTRY</button>
               </div>
             </SpecimenCard>
