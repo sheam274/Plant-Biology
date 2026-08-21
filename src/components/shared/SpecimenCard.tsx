@@ -19,18 +19,23 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({
 }) => {
   return (
     <motion.div
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.2 }}
+      initial={false}
+      whileHover="hover"
       className={cn(
         "group relative border border-line bg-surface p-6 flex flex-col h-full",
-        "transition-colors hover:border-amber",
+        "transition-all duration-300 hover:border-amber hover:shadow-[inset_0_0_20px_rgba(201,138,44,0.05)]",
         className
       )}
     >
       <div className="flex justify-between items-start mb-6">
-        <div className="mono-data text-[10px] text-primary-soft border border-line px-2 py-0.5 group-hover:bg-amber group-hover:text-bg transition-colors">
+        <motion.div 
+          variants={{
+            hover: { y: -2 }
+          }}
+          className="mono-data text-[10px] text-primary-soft border border-line px-2 py-0.5 group-hover:bg-amber group-hover:text-bg transition-colors"
+        >
           {catalogId}
-        </div>
+        </motion.div>
         <div className="w-1.5 h-1.5 rounded-full bg-line group-hover:bg-amber transition-colors" />
       </div>
 
@@ -41,10 +46,12 @@ export const SpecimenCard: React.FC<SpecimenCardProps> = ({
 
       {/* Amber hover signature border */}
       <motion.div 
-        className="absolute bottom-0 left-0 w-full h-[2px] bg-amber origin-left"
+        className="absolute bottom-0 left-0 w-full h-[1px] bg-amber origin-left"
+        variants={{
+          hover: { scaleX: 1 }
+        }}
         initial={{ scaleX: 0 }}
-        whileHover={{ scaleX: 1 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
       />
     </motion.div>
   );
