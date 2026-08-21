@@ -47,7 +47,8 @@
   --radius-lg: 0px;
 }
 
-:root {
+:root,
+[data-theme="day"] {
   /* Day Mode Tokens */
   --bg: #FAF8F1;
   --surface: #F1EDE0;
@@ -58,17 +59,17 @@
   --teal: #2E6E62;
   --line: #D8D2C0;
   --highlight: #8FBF3F;
-
   --radius: 0px;
 }
 
+[data-theme="night"],
 .dark {
   /* Night Mode Tokens */
   --bg: #10160F;
   --surface: #171E15;
   --ink: #EDE9DC;
   --primary: #7FBF8A;
-  --primary-soft: #4E9C8C; /* Use teal-like for soft in dark mode or adjust */
+  --primary-soft: #4E9C8C;
   --amber: #E3A94A;
   --teal: #4E9C8C;
   --line: #2B3327;

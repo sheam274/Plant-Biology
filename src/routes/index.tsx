@@ -5,6 +5,8 @@ import { Hero } from "../components/home/Hero";
 import { HowWeWork } from "../components/home/HowWeWork";
 import { ResearchGrid } from "../components/home/ResearchGrid";
 import { RecentPosts } from "../components/home/RecentPosts";
+import { Breadcrumb } from "../components/shared/Breadcrumb";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -20,13 +22,24 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen selection:bg-amber/30">
       <Header />
-      <main className="flex-grow">
-        <Hero />
-        <HowWeWork />
-        <ResearchGrid />
-        <RecentPosts />
+      <main className="flex-grow pt-[76px]">
+        <Breadcrumb />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key="home"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            <Hero />
+            <HowWeWork />
+            <ResearchGrid />
+            <RecentPosts />
+          </motion.div>
+        </AnimatePresence>
       </main>
       <Footer />
     </div>
