@@ -28,7 +28,7 @@ export const RecentPosts: React.FC = () => {
                 <span className="mono-data text-[10px] text-primary-soft">
                   {post.published_at ? new Date(post.published_at).toLocaleDateString() : 'Draft'}
                 </span>
-                <Link to="/" className="text-[10px] mono-data text-amber hover:underline">READ ENTRY</Link>
+                <Link to={`/blog/${post.slug}` as any} className="text-[10px] mono-data text-amber hover:underline">READ ENTRY</Link>
               </div>
             </SpecimenCard>
           ))}

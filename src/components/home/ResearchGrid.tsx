@@ -24,9 +24,9 @@ export const ResearchGrid: React.FC = () => {
               className="bg-bg border-none hover:bg-surface"
             >
               <div className="mt-8 pt-6 border-t border-line/40">
-                <button className="text-[10px] mono-data text-teal hover:text-amber transition-colors flex items-center gap-2">
+                <Link to="/research" className="text-[10px] mono-data text-teal hover:text-amber transition-colors flex items-center gap-2">
                   VIEW PROGRAM DETAILS →
-                </button>
+                </Link>
               </div>
             </SpecimenCard>
           ))}
