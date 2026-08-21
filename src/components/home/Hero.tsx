@@ -23,7 +23,89 @@ export const Hero: React.FC = () => {
               {`'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            Wire the Home page components to fetch their content from Supabase (with safe fallbacks) instead of using hardcoded labels.`}
+                                            Set up the following Supabase tables with RLS enabled (public read, authenticated-admin write):
+
+lab_members
+- id uuid pk
+- full_name text
+- role text          -- 'Lab PI' | 'Lab Co-PI I' | 'Lab Co-PI II' | 'Faculty' | 'Researcher' | 'PhD Student' | 'MPhil Student' | 'MS Student' | 'Undergraduate' | 'Supporting Staff' | 'Alumni'
+- category text       -- 'current' | 'alumni'
+- alumni_year int      -- nullable, only for alumni
+- bio text
+- photo_url text
+- email text
+- display_order int
+- created_at timestamptz default now()
+
+research_programs
+- id uuid pk
+- catalog_code text unique   -- e.g. 'NAP-01', 'FOD-02' — used as the specimen tag
+- title text
+- track text          -- 'Lab Co-PI I' | 'Lab Co-PI II' | 'Ongoing Research' | 'Facilities'
+- parent_program_id uuid nullable references research_programs(id)  -- for sub-programs like Agrobacterium-mediated under Napier Transformation
+- summary text
+- body text
+- cover_image_url text
+- display_order int
+
+publications
+- id uuid pk
+- catalog_code text unique   -- e.g. 'PUB-2024-11'
+- title text
+- authors text
+- journal text
+- year int
+- doi_or_link text
+- abstract text
+
+collaborations
+- id uuid pk
+- partner_name text
+- partner_type text   -- 'University' | 'Funding Agency' | 'Industry' | 'NGO'
+- logo_url text
+- description text
+- website_url text
+
+gallery_items
+- id uuid pk
+- title text
+- image_url text
+- album text          -- e.g. 'Lab Facilities', 'Outreach Programs', 'Field Work'
+- taken_at date
+- display_order int
+
+blog_posts
+- id uuid pk
+- slug text unique
+- title text
+- category text        -- 'Biotechnology' | 'Latest' | etc.
+- excerpt text
+- body text
+- cover_image_url text
+- published_at timestamptz
+- author_id uuid references lab_members(id)
+
+outreach_programs
+- id uuid pk
+- program_type text    -- 'Training' | 'Internship' | 'Seminar' | 'Biosafety' | 'Frugal Science'
+- title text
+- description text
+- cover_image_url text
+- event_date date nullable
+
+contact_messages
+- id uuid pk
+- name text
+- email text
+- message text
+- submitted_at timestamptz default now()
+
+newsletter_subscribers
+- id uuid pk
+- email text unique
+- subscribed_at timestamptz default now()
+
+Build a simple protected /admin route (Supabase auth, email/password, single admin role) with a CRUD table view for each of these — the client needs to add publications, blog posts, and gallery images without a developer. Keep the admin UI plain/functional, it doesn't need the same design polish as the public site — clarity over style there.`}
             </p>
             <div className="flex flex-wrap gap-4">
               <button className="px-8 py-4 bg-primary text-bg font-medium hover:bg-primary-soft transition-colors flex items-center gap-2 group">
