@@ -86,10 +86,10 @@ export const Header: React.FC = () => {
               <Link
                 to={item.href as any}
                 className={cn(
-                  "text-sm font-medium text-ink hover:text-amber transition-colors flex items-center gap-1",
+                  "text-sm font-medium text-ink hover-underline flex items-center gap-1 py-1",
                   activeMega === item.label && "text-amber"
                 )}
-                activeProps={{ className: "text-amber" }}
+                activeProps={{ className: "text-amber after:scale-x-100" }}
               >
                 {item.label}
                 {item.hasMega && <ChevronDown size={14} className={cn("transition-transform", activeMega === item.label && "rotate-180")} />}
@@ -128,7 +128,7 @@ export const Header: React.FC = () => {
 
           <Link
             to="/about"
-            className="hidden sm:block px-5 py-2 bg-amber text-bg text-sm font-medium hover:brightness-110 transition-all uppercase tracking-wider mono-data"
+            className="hidden sm:block px-5 py-2 bg-primary text-bg text-sm font-medium btn-magnetic uppercase tracking-wider mono-data"
           >
             Laboratory Vision
           </Link>
@@ -182,14 +182,17 @@ export const Header: React.FC = () => {
                     </ul>
                   </div>
                   <div className="col-span-1 border-l border-line pl-12">
-                    <span className="mono-data text-[10px] text-primary-soft block mb-4">Featured Program</span>
-                    <div className="group relative border border-line p-4 bg-bg">
-                      <div className="aspect-video bg-surface mb-3 flex items-center justify-center">
+                    <div className="mono-data text-[10px] text-primary-soft block mb-4">Featured Program</div>
+                    <SpecimenCard
+                      variant="glass"
+                      catalogId="CGPBL · RES-002"
+                      title="CRISPR/Cas9 Transformation"
+                      className="p-4"
+                    >
+                      <div className="aspect-video bg-surface/50 mt-3 flex items-center justify-center border border-line/30">
                         <Dna size={32} className="text-line group-hover:text-amber transition-colors" />
                       </div>
-                      <div className="mono-data text-[8px] text-amber mb-1">CGPBL · RES-002</div>
-                      <h4 className="text-sm font-display text-primary group-hover:text-amber transition-colors">CRISPR/Cas9 Transformation</h4>
-                    </div>
+                    </SpecimenCard>
                   </div>
                 </div>
               )}
